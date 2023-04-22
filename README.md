@@ -101,4 +101,3 @@ Las unidades siempre son:
   - o `grados` de los de 360º
   - o `milisegundos` de los de 1000 = 1 segundo
   - o `pintar_despues` que es un `boolean` que en `true` pintará la pantalla.# constructor-de-homactogramas-de-castelog
-# constructor-de-homactogramas-de-castelog

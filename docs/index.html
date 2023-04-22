@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head>
-    <title>Canvas Playground</title>
+    <title>Homactógrafo Z</title>
     <meta charset="utf8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
@@ -10,18 +10,20 @@
         padding-top: 20px;
         padding-bottom: 20px;
       }
-      .w_100 { width: 100%; }
+      .w_100 {
+        width: 100%;
+      }
     </style>
     <script src="js/calo.js"></script>
     <script src="js/castelog-parser.js"></script>
-    <script src="js/play.js"></script>
+    <script src="js/homactografo.js"></script>
 </head><body>
     <div class="canvas_box">
       <canvas id="canvas_for_demo"></canvas>
     </div>
     <div id="app"></div>
 <script>
-// [castelog:html5izable] ACTIVADO con: {"autor":"allnulled","nombre":"app-por-defecto","version":"0.0.1","contenido":{"head":"<head>\n    <title>Canvas Playground</title>\n    <meta charset=\"utf8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <style>\n      .canvas_box {\n        background-color: #222;\n        box-shadow: 0 0 4px black;\n        text-align: center;\n        padding-top: 20px;\n        padding-bottom: 20px;\n      }\n      .w_100 { width: 100%; }\n    </style>\n    &gt;script src=\"js/calo.js\">&gt;/script>\n    &gt;script src=\"js/castelog-parser.js\">&gt;/script>\n    &gt;script src=\"js/play.js\">&gt;/script>\n</head>","body":"<body>\n    <div class=\"canvas_box\">\n      <canvas id=\"canvas_for_demo\"></canvas>\n    </div>\n    <div id=\"app\"></div>\n</body>"}}
+// [castelog:html5izable] ACTIVADO con: {"autor":"allnulled","nombre":"app-por-defecto","version":"0.0.1","contenido":{"head":"<head>\n    <title>Homactógrafo Z</title>\n    <meta charset=\"utf8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <style>\n      .canvas_box {\n        background-color: #222;\n        box-shadow: 0 0 4px black;\n        text-align: center;\n        padding-top: 20px;\n        padding-bottom: 20px;\n      }\n      .w_100 {\n        width: 100%;\n      }\n    </style>\n    &gt;script src=\"js/calo.js\">&gt;/script>\n    &gt;script src=\"js/castelog-parser.js\">&gt;/script>\n    &gt;script src=\"js/homactografo.js\">&gt;/script>\n</head>","body":"<body>\n    <div class=\"canvas_box\">\n      <canvas id=\"canvas_for_demo\"></canvas>\n    </div>\n    <div id=\"app\"></div>\n</body>"}}
 
 
 
@@ -59864,8 +59866,8 @@ Castelog.variables.operador.exclamacion.ejs.ui.dom.elemento = function(elemento 
 ////////////////////////////////////////// Aquí termina el script de Castelog //
 ////////////////////////////////////////////////////////////////////////////////
 
-const PaginaDeInicio = Castelog.metodos.un_componente_vue2("PaginaDeInicio",
-  "<div class=\"PaginaDeInicio Component win7\">"
+const ConstructorDeHomactogramasDeCastelog = Castelog.metodos.un_componente_vue2("ConstructorDeHomactogramasDeCastelog",
+  "<div class=\"ConstructorDeHomactogramasDeCastelog Component win7\">"
  + "    <div class=\"editor_box\">"
  + "      <div v-if=\"exito_de_compilacion\">"
  + "        <span>✔ La compilación fue exitosa.</span>"
@@ -59883,6 +59885,8 @@ const PaginaDeInicio = Castelog.metodos.un_componente_vue2("PaginaDeInicio",
  + "      <div v-if=\"error\">"
  + "        <span>✘ Error: {{ error.message }}</span>"
  + "      </div>"
+ + "      <div class=\"salida_del_canvas\" ref=\"salida_del_canvas\">"
+ + "      </div>"
  + "      <div style=\"position: relative;\">"
  + "        <textarea style=\"font-family: monospace; font-size: 9px; resize: vertical; min-height: 900px;\" class=\"w_100\" v-model=\"codigo_actual\"></textarea>"
  + "        <div style=\"position: absolute; top: 5px; right: 5px; left: auto; bottom: auto;\">"
@@ -59894,7 +59898,7 @@ const PaginaDeInicio = Castelog.metodos.un_componente_vue2("PaginaDeInicio",
  + "  </div>",
   function(component) {return { data() {try {
 return { codigo_actual_js:"",
-codigo_actual:"\nHago pantalla.pintarse.cada(200).\nDesde 0 hasta 10 {\n  Hago asíncronamente persona.rotar.codo.izquierdo(40,1000).\n}.\n".trim(  ),
+codigo_actual:"".trim(  ),
 persona:undefined,
 fondo:undefined,
 pantalla:undefined,
@@ -59973,9 +59977,11 @@ throw error;
 },
 compilar:function( mostrar_exito ) {try {
 const codigo_calo = this.codigo_actual;
+console.log(codigo_calo);
 const codigo_js = Castelog_parser.parse( codigo_calo );
-const codigo_temporal = `(async function(persona, pantalla, fondo, componente) { try { console.log(this); ${codigo_js} } catch(error) { console.log(error); this.mostrar_error(error); } })`;
+const codigo_temporal = `(async function(persona, pantalla, fondo, componente, juego, utils) {\n  try {\n    console.log(this);\n\n${codigo_js}\n\n  } catch(error) {\n    console.log(error);\n    this.mostrar_error(error);\n  }\n})`;
 const codigo_js_final = codigo_temporal;
+console.log(codigo_js_final);
 this.codigo_actual_js = codigo_js_final;
 if(mostrar_exito) {
 this.mostrar_exito_de_compilacion(  );
@@ -59986,11 +59992,17 @@ this.mostrar_error( error );}
 },
 aplicar:async function() {try {
 const codigo_js = this.compilar(  );
+console.log(codigo_js);
 const funcion_js = this.$window.eval( codigo_js );
+console.log(funcion_js);
 const resultado = (await funcion_js.call( this,
 this.persona,
 this.pantalla,
-this.pantalla.fondo ));
+this.pantalla.fondo,
+this,
+this.juego,
+this.juego.utils ));
+this.juego.utils.setLastScript( this.codigo_actual );
 if((!(typeof resultado === 'undefined'))) {
 this.mostrar_exito_de_ejecucion( resultado );
 }
@@ -59999,11 +60011,12 @@ this.mostrar_error( error );}
 }
 },
 mounted() {try {
-console.log("MONTADOOOOO");
-this.juego = this.$window.play(  );
+console.log("Montada página de inicio.");
+this.juego = this.$window.homactografo( this.$refs.salida_del_canvas );
 this.persona = this.juego.persona;
 this.fondo = this.juego.fondo;
 this.pantalla = this.juego.pantalla;
+this.codigo_actual = this.juego.utils.getLastScript(  );
 setTimeout( () => {try {
 this.pantalla.pintarse(  );
 } catch(error) {
@@ -60048,7 +60061,7 @@ mounted() {
   {},
   [ { path:"/",
 name:"Home",
-component:PaginaDeInicio,
+component:ConstructorDeHomactogramasDeCastelog,
 props:{ 
 }
 } ],
