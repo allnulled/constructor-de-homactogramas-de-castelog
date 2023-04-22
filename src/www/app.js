@@ -1,5 +1,5 @@
 
-// [castelog:html5izable] ACTIVADO con: {"autor":"allnulled","nombre":"app-por-defecto","version":"0.0.1","contenido":{"head":"<head>\n    <title>Homactógrafo Z</title>\n    <meta charset=\"utf8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <style>\n      .canvas_box {\n        background-color: #222;\n        box-shadow: 0 0 4px black;\n        text-align: center;\n        padding-top: 20px;\n        padding-bottom: 20px;\n      }\n      .w_100 {\n        width: 100%;\n      }\n    </style>\n    <script src=\"js/calo.js\"></script>\n    <script src=\"js/castelog-parser.js\"></script>\n    <script src=\"js/homactografo.js\"></script>\n</head>","body":"<body>\n    <div class=\"canvas_box\">\n      <canvas id=\"canvas_for_demo\"></canvas>\n    </div>\n    <div id=\"app\"></div>\n</body>"}}
+// [castelog:html5izable] ACTIVADO con: {"autor":"allnulled","nombre":"app-por-defecto","version":"0.0.1","contenido":{"head":"<head>\n    <title>Homactógrafo Z</title>\n    <meta charset=\"utf8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <style>\n      .canvas_box {\n        background-color: #222;\n        box-shadow: 0 0 4px black;\n        text-align: center;\n        padding-top: 20px;\n        padding-bottom: 20px;\n      }\n      .w_100 {\n        width: 100%;\n      }\n      .win7 pre.salida_del_canvas {\n        min-height: 100px;\n        padding: 2px;\n        font-size: 10px;\n        border: 6px double #333;\n        background-color: #CCF;\n        color: #333;\n        text-shadow: 0 0 1px black;\n        font-family: Arial;\n        margin-top: 2px;\n        margin-bottom: 2px;\n      }\n    </style>\n    <script src=\"js/calo.js\"></script>\n    <script src=\"js/castelog-parser.js\"></script>\n    <script src=\"js/homactografo.js\"></script>\n</head>","body":"<body>\n    <div class=\"canvas_box\">\n      <canvas id=\"canvas_for_demo\"></canvas>\n    </div>\n    <div id=\"app\"></div>\n</body>"}}
 
 
 
@@ -59861,8 +59861,7 @@ const ConstructorDeHomactogramasDeCastelog = Castelog.metodos.un_componente_vue2
  + "      <div v-if=\"error\">"
  + "        <span>✘ Error: {{ error.message }}</span>"
  + "      </div>"
- + "      <div class=\"salida_del_canvas\" ref=\"salida_del_canvas\">"
- + "      </div>"
+ + "      <pre class=\"salida_del_canvas\" ref=\"salida_del_canvas\"></pre>"
  + "      <div style=\"position: relative;\">"
  + "        <textarea style=\"font-family: monospace; font-size: 9px; resize: vertical; min-height: 900px;\" class=\"w_100\" v-model=\"codigo_actual\"></textarea>"
  + "        <div style=\"position: absolute; top: 5px; right: 5px; left: auto; bottom: auto;\">"

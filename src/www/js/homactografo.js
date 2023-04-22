@@ -21,7 +21,7 @@ window.homactografo = function(elemento_de_salida, settings = {}) {
       }
     },
     printar: function(msg) {
-      elemento_de_salida.textContent += "\n" + msg;
+      elemento_de_salida.textContent = msg + "\n" + elemento_de_salida.textContent;
     },
     una_espera: function(callback, secs) {
       return new Promise(ok => {
