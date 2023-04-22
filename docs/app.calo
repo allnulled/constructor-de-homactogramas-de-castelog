@@ -1,0 +1,163 @@
+Ejecutable como documento HTML5
+    con autor allnulled
+    con nombre app-por-defecto
+    con versión 0.0.1
+<head>
+    <title>Canvas Playground</title>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .canvas_box {
+        background-color: #222;
+        box-shadow: 0 0 4px black;
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+      .w_100 { width: 100%; }
+    </style>
+    <script src="/js/calo.js"></script>
+    <script src="/js/castelog-parser.js"></script>
+    <script src="/js/play.js"></script>
+</head>
+<body>
+    <div class="canvas_box">
+      <canvas id="canvas_for_demo"></canvas>
+    </div>
+    <div id="app"></div>
+</body>.
+
+importo api nativa.
+
+creo PaginaDeInicio como un componente vue2 con nombre "PaginaDeInicio" con plantilla {
+  <div class="PaginaDeInicio Component win7">
+    <div class="editor_box">
+      <div v-if="exito_de_compilacion">
+        <span>✔ La compilación fue exitosa.</span>
+        <details>
+          <summary>Mostrar código</summary>
+          <div>
+            <textarea class="w_100" style="min-height: 300px;" disabled="true" :value="codigo_actual_js"></textarea>
+          </div>
+        </details>
+      </div>
+      <div v-if="exito_de_ejecucion">
+        <span>✔ La ejecución fue exitosa.</span>
+        <pre>{{ JSON.stringify(exito_de_ejecucion, null, 2) }}</pre>
+      </div>
+      <div v-if="error">
+        <span>✘ Error: {{ error.message }}</span>
+      </div>
+      <div style="position: relative;">
+        <textarea style="font-family: monospace; font-size: 9px; resize: vertical; min-height: 900px;" class="w_100" v-model="codigo_actual"></textarea>
+        <div style="position: absolute; top: 5px; right: 5px; left: auto; bottom: auto;">
+          <button v-on:click="() => compilar(true)">Compilar</button>
+          <button v-on:click="() => aplicar()">Aplicar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+} con lógica {
+  retorno {
+    método data donde {
+      retorno {
+        codigo_actual_js: "",
+        codigo_actual: un código en texto donde {
+Hago pantalla.pintarse.cada(200).
+Desde 0 hasta 10 {
+  Hago asíncronamente persona.rotar.codo.izquierdo(40,1000).
+}.
+}.trim(),
+        persona: undefined,
+        fondo: undefined,
+        pantalla: undefined,
+        exito_de_ejecucion: undefined,
+        exito_de_compilacion: undefined,
+        error: undefined
+      }.
+    }.
+    propiedad methods como {
+      mostrar_exito_de_ejecucion: una función con (resultado) donde {
+        asigno this.error como undefined.
+        asigno this.exito_de_compilacion como undefined.
+        asigno this.exito_de_ejecucion como resultado.
+        asigno this.exito_de_ejecucion_timeout_id como setTimeout(una lambda donde asigno this.exito_de_ejecucion como undefined después hago this.$forceUpdate(true), 1000 * 10).
+        hago this.$forceUpdate(true).
+      },
+      mostrar_exito_de_compilacion: una función con () donde {
+        asigno this.error como undefined.
+        asigno this.exito_de_ejecucion como undefined.
+        asigno this.exito_de_compilacion como true.
+        asigno this.exito_timeout_id como setTimeout(una lambda donde asigno this.exito_de_compilacion como undefined después hago this.$forceUpdate(true), 1000 * 10).
+        hago this.$forceUpdate(true).
+      },
+      mostrar_error: una función con (error) donde {
+        ### imprimo error.
+        asigno this.exito_de_ejecucion como undefined.
+        asigno this.exito_de_compilacion como undefined.
+        asigno this.error como error.
+        asigno this.error_timeout_id como setTimeout(una lambda donde asigno this.error como undefined después hago this.$forceUpdate(true), 1000 * 10).
+        hago this.$forceUpdate(true).
+      },
+      compilar: una función con (mostrar_exito) donde {
+        creo codigo_calo como this.codigo_actual.
+        creo codigo_js como Castelog_parser.parse(codigo_calo).
+        creo codigo_temporal como `(async function(persona, pantalla, fondo, componente) { try { console.log(this); ${codigo_js} } catch(error) { console.log(error); this.mostrar_error(error); } })`.
+        creo codigo_js_final como codigo_temporal.
+        asigno this.codigo_actual_js como codigo_js_final.
+        si mostrar_exito {
+          hago this.mostrar_exito_de_compilacion().
+        }.
+        retorno codigo_js_final.
+      } en errores hago this.mostrar_error(error),
+      aplicar: una función asíncrona donde {
+        creo codigo_js como this.compilar().
+        creo funcion_js como this.$window.eval(codigo_js).
+        creo resultado como asíncronamente funcion_js.call(this, this.persona, this.pantalla, this.pantalla.fondo).
+        si resultado no es tipo indefinido {
+          hago this.mostrar_exito_de_ejecucion(resultado).
+        }.
+      } en errores hago this.mostrar_error(error)
+    }.
+    método mounted donde {
+      imprimo "MONTADOOOOO".
+      asigno this.juego como this.$window.play().
+      asigno this.persona como this.juego.persona.
+      asigno this.fondo como this.juego.fondo.
+      asigno this.pantalla como this.juego.pantalla.
+      hago setTimeout(una lambda donde hago this.pantalla.pintarse(), 1000).
+    }.
+  }.
+}.
+
+creo App como una aplicación vue2 con nombre "App" con rutas [{
+    propiedad path como "/".
+    propiedad name como "Home".
+    propiedad component como PaginaDeInicio.
+    propiedad props como {}.
+}] con traducciones {
+    propiedad es como {}.
+    propiedad en como {}.
+    propiedad ca como {}.
+} con plantilla {
+  <div class="App Component Castelog-app">
+    <router-view></router-view>
+  </div>
+} con estilos {
+    html {}
+    body {}
+    .Component {}
+    .App {}
+} con lógica {
+  retorno {
+    método data donde {
+      retorno {
+        
+      }.
+    }.
+    propiedad methods como {}.
+    propiedad watch como {}.
+    método beforeMount donde {}.
+    método mounted donde {}.
+  }.
+} montada en "#app".
