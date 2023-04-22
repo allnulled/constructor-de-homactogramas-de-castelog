@@ -4,7 +4,7 @@ Homactógrafo en 2D con profundidad Z para Castelog.
 
 ## Versión online
 
-[https://allnulled.github.io/canvas-playground](https://allnulled.github.io/canvas-playground)
+[https://allnulled.github.io/constructor-de-homactogramas-de-castelog](https://allnulled.github.io/constructor-de-homactogramas-de-castelog)
 
 ![Imagen_de_homactografo_1](./docs/img/homactografo-1.png)
 
