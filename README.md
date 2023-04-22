@@ -1,4 +1,4 @@
-# canvas-playground
+# homactógrafo de castelog
 
 Homactógrafo en 2D con profundidad Z para Castelog.
 
