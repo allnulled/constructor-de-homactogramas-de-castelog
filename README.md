@@ -27,14 +27,49 @@ const {
 } = window.homactografo(document.getElementById("pre#salida"));
 ```
 
-Desde el homactógrafo de `castelog` puedes acceder a estas variables directamente:
+Desde el homactógrafo de `castelog` puedes acceder a estas variables directamente: `persona`, `fondo`, `pantalla` y `utils`.
+
+El script de ejemplo hace una forma de caminar:
 
 ```calo
-hago ~ persona.rotar.codo.derecho(0+45,1000,1).
-hago ~ persona.rotar.codo.derecho(0-45,1000,1).
-hago ~ persona.rotar.codo.derecho(0-45,1000,1).
-hago ~ persona.rotar.codo.derecho(0+45,1000,1).
+hago persona.restablecer.estado(1).
+creo largo como 20.
+creo tiempo como 100.
+creo pasos como 4.
+creo distancia como 100.
+creo distancia_pasos como distancia/pasos.
+desde 0 hasta pasos {
+ hago ~ persona.posicionar.hombro.derecho(   0-largo-largo,tiempo,1).
+ hago ~ persona.posicionar.codo.derecho(     0+largo,tiempo,1).
+ hago ~ persona.posicionar.hombro.izquierdo( 0+largo+largo,tiempo,1).
+ hago ~ persona.posicionar.codo.izquierdo(   0-largo,tiempo,1).
+ hago ~ persona.posicionar.hombro.izquierdo( 0+largo,tiempo,1).
+ hago ~ persona.posicionar.hombro.derecho(   0-largo,tiempo,1).
+ hago ~ Promise.all([
+  persona.posicionar.pierna.derecha(     0+largo,tiempo,0),
+  persona.posicionar.rodilla.derecha(    0+largo,tiempo,0),
+  persona.trasladarse.por.eje.x(0+distancia_pasos,tiempo,0)
+ ]).
+ hago pantalla.pintarse().
+ hago ~ persona.posicionar.pierna.izquierda(   0+0,tiempo,1).
+ hago ~ persona.posicionar.rodilla.izquierda(  0+largo-largo,tiempo,1).
+ hago ~ persona.posicionar.pierna.derecha(     0-largo,tiempo,1).
+ hago ~ persona.posicionar.rodilla.derecha(    0+largo,tiempo,1).
+ hago ~ persona.posicionar.pierna.izquierda(   0+largo,tiempo,1).
+ hago ~ persona.posicionar.rodilla.izquierda(  0+largo+largo,tiempo,1).
+}.
+hago persona.restablecer.postura(1).
 ```
+
+Esto se puede envolver en una función, y llamar desde ella a todo el proceso. Así, podemos hacer directamente:
+
+```calo
+hago ~ persona.caminar_1(50).
+```
+
+Y de esa forma, conseguimos mover el monigote escribiendo solo 1 línea.
+
+Y así se pueden ir añadiendo métodos, y ampliar las capacidades de la `persona`.
 
 ### Referencia
 
