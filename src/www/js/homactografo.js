@@ -176,7 +176,7 @@ window.homactografo = function(elemento_de_salida, settings = {}) {
     rotar_pierna_izquierda(scope) {
       return (diff, secs = 0, pintar_despues = 0) => {
         const accion_con_demora = utils.una_espera(() => {
-          scope.apertura_del_pierna_izq += diff;
+          scope.apertura_de_la_pierna_izq += diff;
         }, secs);
         if(pintar_despues) {
           accion_con_demora.then(resultado => {
@@ -190,7 +190,7 @@ window.homactografo = function(elemento_de_salida, settings = {}) {
     rotar_pierna_derecha(scope) {
       return (diff, secs = 0, pintar_despues = 0) => {
         const accion_con_demora = utils.una_espera(() => {
-          scope.apertura_del_pierna_der += diff;
+          scope.apertura_de_la_pierna_der += diff;
         }, secs);
         if(pintar_despues) {
           accion_con_demora.then(resultado => {
@@ -204,7 +204,7 @@ window.homactografo = function(elemento_de_salida, settings = {}) {
     rotar_rodilla_izquierda(scope) {
       return (diff, secs = 0, pintar_despues = 0) => {
         const accion_con_demora = utils.una_espera(() => {
-          scope.apertura_del_rodilla_izq += diff;
+          scope.apertura_de_la_rodilla_izq += diff;
         }, secs);
         if(pintar_despues) {
           accion_con_demora.then(resultado => {
@@ -218,7 +218,7 @@ window.homactografo = function(elemento_de_salida, settings = {}) {
     rotar_rodilla_derecha(scope) {
       return (diff, secs = 0, pintar_despues = 0) => {
         const accion_con_demora = utils.una_espera(() => {
-          scope.apertura_del_rodilla_der += diff;
+          scope.apertura_de_la_rodilla_der += diff;
         }, secs);
         if(pintar_despues) {
           accion_con_demora.then(resultado => {
@@ -288,7 +288,7 @@ window.homactografo = function(elemento_de_salida, settings = {}) {
     posicionar_pierna_izquierda(scope) {
       return (diff, secs = 0, pintar_despues = 0) => {
         const accion_con_demora = utils.una_espera(() => {
-          scope.apertura_del_pierna_izq = scope.estado_inicial.apertura_del_pierna_izq + diff;
+          scope.apertura_de_la_pierna_izq = scope.estado_inicial.apertura_de_la_pierna_izq + diff;
         }, secs);
         if(pintar_despues) {
           accion_con_demora.then(resultado => {
@@ -302,7 +302,7 @@ window.homactografo = function(elemento_de_salida, settings = {}) {
     posicionar_pierna_derecha(scope) {
       return (diff, secs = 0, pintar_despues = 0) => {
         const accion_con_demora = utils.una_espera(() => {
-          scope.apertura_del_pierna_der = scope.estado_inicial.apertura_del_pierna_der + diff;
+          scope.apertura_de_la_pierna_der = scope.estado_inicial.apertura_de_la_pierna_der + diff;
         }, secs);
         if(pintar_despues) {
           accion_con_demora.then(resultado => {
@@ -316,7 +316,7 @@ window.homactografo = function(elemento_de_salida, settings = {}) {
     posicionar_rodilla_izquierda(scope) {
       return (diff, secs = 0, pintar_despues = 0) => {
         const accion_con_demora = utils.una_espera(() => {
-          scope.apertura_del_rodilla_izq = scope.estado_inicial.apertura_del_rodilla_izq + diff;
+          scope.apertura_de_la_rodilla_izq = scope.estado_inicial.apertura_de_la_rodilla_izq + diff;
         }, secs);
         if(pintar_despues) {
           accion_con_demora.then(resultado => {
@@ -330,7 +330,7 @@ window.homactografo = function(elemento_de_salida, settings = {}) {
     posicionar_rodilla_derecha(scope) {
       return (diff, secs = 0, pintar_despues = 0) => {
         const accion_con_demora = utils.una_espera(() => {
-          scope.apertura_del_rodilla_der = scope.estado_inicial.apertura_del_rodilla_der + diff;
+          scope.apertura_de_la_rodilla_der = scope.estado_inicial.apertura_de_la_rodilla_der + diff;
         }, secs);
         if(pintar_despues) {
           accion_con_demora.then(resultado => {
@@ -415,15 +415,21 @@ window.homactografo = function(elemento_de_salida, settings = {}) {
         apertura_de_la_rodilla_der: 180,
       };
       this.restablecer = {
-        postura: () => {
+        postura: (pintar_despues = 0) => {
           const estado_inicial = Object.assign({}, this.estado_inicial);
           delete estado_inicial.x;
           delete estado_inicial.y;
           delete estado_inicial.z;
           Object.assign(this, estado_inicial);
+          if(pintar_despues) {
+            this.pantalla.pintarse();
+          }
         },
-        estado: () => {
+        estado: (pintar_despues = 0) => {
           Object.assign(this, Object.assign({}, this.estado_inicial));
+          if (pintar_despues) {
+            this.pantalla.pintarse();
+          }
         }
       };
       this.restablecer.estado();

@@ -43,6 +43,114 @@ Ejecutable como documento HTML5
 
 importo api nativa.
 
+asigno window.extender_persona como una función con (persona) donde {
+  asigno persona.caminar_1 como una función asíncrona con (x, y, z, ms o en su defecto 500) donde {
+############################################################
+hago persona.restablecer.postura().
+hago pantalla.pintarse().
+creo levantamiento como 20.
+creo distancia_por_pasos como 30.
+creo pasos como 10.
+desde 0 hasta pasos {
+  hago ~ persona.rotar.codo.derecho( 0-levantamiento,100,1).
+  hago ~ persona.rotar.hombro.derecho( 0-levantamiento,100,1).
+  hago ~ persona.rotar.pierna.izquierda( 0-levantamiento,100,1).
+  hago ~ persona.rotar.rodilla.izquierda( 0-levantamiento,100,1).
+  hago ~ persona.trasladarse.por.eje.x(distancia_por_pasos*1/4,200,1).
+  hago ~ persona.rotar.hombro.derecho( 0+levantamiento,100,1).
+  hago ~ persona.rotar.codo.derecho( 0+levantamiento,100,1).
+  hago ~ persona.rotar.rodilla.izquierda( 0+levantamiento,100,1).
+  hago ~ persona.rotar.pierna.izquierda( 0+levantamiento,100,1).
+  hago ~ persona.rotar.rodilla.izquierda( 0+levantamiento,100,1).
+  hago ~ persona.trasladarse.por.eje.x(distancia_por_pasos*0/4,200,1).
+  hago ~ persona.rotar.rodilla.izquierda( 0-levantamiento,100,1).
+
+  hago ~ persona.rotar.codo.izquierdo( 0-levantamiento,100,1).
+  hago ~ persona.rotar.hombro.izquierdo( 0-levantamiento,100,1).
+  hago ~ persona.rotar.pierna.derecha( 0-levantamiento,100,1).
+  hago ~ persona.rotar.rodilla.derecha( 0-levantamiento,100,1).
+  hago ~ persona.trasladarse.por.eje.x(distancia_por_pasos*1/4,200,1).
+  hago ~ persona.rotar.hombro.izquierdo( 0+levantamiento,100,1).
+  hago ~ persona.rotar.codo.izquierdo( 0+levantamiento,100,1).
+  hago ~ persona.rotar.rodilla.derecha( 0+levantamiento,100,1).
+  hago ~ persona.rotar.pierna.derecha( 0+levantamiento,100,1).
+  hago ~ persona.rotar.rodilla.derecha( 0+levantamiento,100,1).
+  hago ~ persona.trasladarse.por.eje.x(distancia_por_pasos*0/4,200,1).
+  hago ~ persona.rotar.rodilla.derecha( 0-levantamiento,100,1).
+}.
+hago ~ persona.rotar.rodilla.derecha( 0-levantamiento,100,1).
+############################################################
+  }.
+  asigno persona.caminar_2 como una función asíncrona con (x, y, z, ms o en su defecto 500) donde {
+############################################################
+hago persona.restablecer.postura().
+hago pantalla.pintarse().
+creo levantamiento como 20.
+creo distancia_por_pasos como 30.
+creo pasos como 10.
+desde 0 hasta pasos {
+  hago ~ persona.rotar.codo.derecho( 0-levantamiento,100,1).
+  hago ~ persona.rotar.hombro.derecho( 0-levantamiento,100,1).
+  hago ~ persona.rotar.pierna.izquierda( 0-levantamiento,100,1).
+  hago ~ persona.rotar.rodilla.izquierda( 0-levantamiento,100,1).
+  hago ~ persona.trasladarse.por.eje.x(distancia_por_pasos*1/4,200,1).
+  hago ~ persona.rotar.hombro.derecho( 0+levantamiento,100,1).
+  hago ~ persona.rotar.codo.derecho( 0+levantamiento,100,1).
+  hago ~ persona.rotar.rodilla.izquierda( 0+levantamiento,100,1).
+  hago ~ persona.rotar.pierna.izquierda( 0+levantamiento,100,1).
+  hago ~ persona.rotar.rodilla.izquierda( 0+levantamiento,100,1).
+  hago ~ persona.trasladarse.por.eje.x(distancia_por_pasos*0/4,200,1).
+  hago ~ persona.rotar.rodilla.izquierda( 0-levantamiento,100,1).
+
+  hago ~ persona.rotar.codo.izquierdo( 0-levantamiento,100,1).
+  hago ~ persona.rotar.hombro.izquierdo( 0-levantamiento,100,1).
+  hago ~ persona.rotar.pierna.derecha( 0-levantamiento,100,1).
+  hago ~ persona.rotar.rodilla.derecha( 0-levantamiento,100,1).
+  hago ~ persona.trasladarse.por.eje.x(distancia_por_pasos*1/4,200,1).
+  hago ~ persona.rotar.hombro.izquierdo( 0+levantamiento,100,1).
+  hago ~ persona.rotar.codo.izquierdo( 0+levantamiento,100,1).
+  hago ~ persona.rotar.rodilla.derecha( 0+levantamiento,100,1).
+  hago ~ persona.rotar.pierna.derecha( 0+levantamiento,100,1).
+  hago ~ persona.rotar.rodilla.derecha( 0+levantamiento,100,1).
+  hago ~ persona.trasladarse.por.eje.x(distancia_por_pasos*0/4,200,1).
+  hago ~ persona.rotar.rodilla.derecha( 0-levantamiento,100,1).
+}.
+hago ~ persona.rotar.rodilla.derecha( 0-levantamiento,100,1).
+############################################################
+  }.
+  retorno persona.
+}.
+
+asigno window.codigo_de_ejemplo como un código en texto donde {
+hago persona.restablecer.estado(1).
+creo largo como 20.
+creo tiempo como 100.
+creo pasos como 4.
+creo distancia como 100.
+creo distancia_pasos como distancia/pasos.
+desde 0 hasta pasos {
+ hago ~ persona.posicionar.hombro.derecho(   0-largo-largo,tiempo,1).
+ hago ~ persona.posicionar.codo.derecho(     0+largo,tiempo,1).
+ hago ~ persona.posicionar.hombro.izquierdo( 0+largo+largo,tiempo,1).
+ hago ~ persona.posicionar.codo.izquierdo(   0-largo,tiempo,1).
+ hago ~ persona.posicionar.hombro.izquierdo( 0+largo,tiempo,1).
+ hago ~ persona.posicionar.hombro.derecho(   0-largo,tiempo,1).
+ hago ~ Promise.all([
+  persona.posicionar.pierna.derecha(     0+largo,tiempo,0),
+  persona.posicionar.rodilla.derecha(    0+largo,tiempo,0),
+  persona.trasladarse.por.eje.x(0+distancia_pasos,tiempo,0)
+ ]).
+ hago pantalla.pintarse().
+ hago ~ persona.posicionar.pierna.izquierda(   0+0,tiempo,1).
+ hago ~ persona.posicionar.rodilla.izquierda(  0+largo-largo,tiempo,1).
+ hago ~ persona.posicionar.pierna.derecha(     0-largo,tiempo,1).
+ hago ~ persona.posicionar.rodilla.derecha(    0+largo,tiempo,1).
+ hago ~ persona.posicionar.pierna.izquierda(   0+largo,tiempo,1).
+ hago ~ persona.posicionar.rodilla.izquierda(  0+largo+largo,tiempo,1).
+}.
+hago persona.restablecer.postura(1).
+}.trim().
+
 creo ConstructorDeHomactogramasDeCastelog como un componente vue2 con nombre "ConstructorDeHomactogramasDeCastelog" con plantilla {
   <div class="ConstructorDeHomactogramasDeCastelog Component win7">
     <div class="editor_box">
@@ -77,7 +185,7 @@ creo ConstructorDeHomactogramasDeCastelog como un componente vue2 con nombre "Co
     método data donde {
       retorno {
         codigo_actual_js: "",
-        codigo_actual: "".trim(),
+        codigo_actual: this.$window.codigo_de_ejemplo,
         persona: undefined,
         fondo: undefined,
         pantalla: undefined,
@@ -136,11 +244,13 @@ creo ConstructorDeHomactogramasDeCastelog como un componente vue2 con nombre "Co
     }.
     método mounted donde {
       imprimo "Montada página de inicio.".
-      asigno this.juego como this.$window.homactografo(this.$refs.salida_del_canvas).
-      asigno this.persona como this.juego.persona.
+      creo juego como this.$window.homactografo(this.$refs.salida_del_canvas).
+      asigno this.juego como juego.
+      asigno this.persona como this.$window.extender_persona(juego.persona).
       asigno this.fondo como this.juego.fondo.
       asigno this.pantalla como this.juego.pantalla.
-      asigno this.codigo_actual como this.juego.utils.getLastScript().
+      creo ultimo_script_aplicado como this.juego.utils.getLastScript().
+      asigno this.codigo_actual como ultimo_script_aplicado o this.$window.codigo_de_ejemplo.
       hago setTimeout(una lambda donde hago this.pantalla.pintarse(), 1000).
     }.
   }.

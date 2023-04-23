@@ -59842,6 +59842,195 @@ Castelog.variables.operador.exclamacion.ejs.ui.dom.elemento = function(elemento 
 ////////////////////////////////////////// Aquí termina el script de Castelog //
 ////////////////////////////////////////////////////////////////////////////////
 
+window.extender_persona = function( persona ) {try {
+persona.caminar_1 = async function( x,
+y,
+z,
+ms = 500 ) {try {
+persona.restablecer.postura(  );
+pantalla.pintarse(  );
+const levantamiento = 20;
+const distancia_por_pasos = 30;
+const pasos = 10;
+for(let index = 0; index < pasos; index++) {(await persona.rotar.codo.derecho( 0 - levantamiento,
+100,
+1 ));
+(await persona.rotar.hombro.derecho( 0 - levantamiento,
+100,
+1 ));
+(await persona.rotar.pierna.izquierda( 0 - levantamiento,
+100,
+1 ));
+(await persona.rotar.rodilla.izquierda( 0 - levantamiento,
+100,
+1 ));
+(await persona.trasladarse.por.eje.x( distancia_por_pasos * 1 / 4,
+200,
+1 ));
+(await persona.rotar.hombro.derecho( 0 + levantamiento,
+100,
+1 ));
+(await persona.rotar.codo.derecho( 0 + levantamiento,
+100,
+1 ));
+(await persona.rotar.rodilla.izquierda( 0 + levantamiento,
+100,
+1 ));
+(await persona.rotar.pierna.izquierda( 0 + levantamiento,
+100,
+1 ));
+(await persona.rotar.rodilla.izquierda( 0 + levantamiento,
+100,
+1 ));
+(await persona.trasladarse.por.eje.x( distancia_por_pasos * 0 / 4,
+200,
+1 ));
+(await persona.rotar.rodilla.izquierda( 0 - levantamiento,
+100,
+1 ));
+(await persona.rotar.codo.izquierdo( 0 - levantamiento,
+100,
+1 ));
+(await persona.rotar.hombro.izquierdo( 0 - levantamiento,
+100,
+1 ));
+(await persona.rotar.pierna.derecha( 0 - levantamiento,
+100,
+1 ));
+(await persona.rotar.rodilla.derecha( 0 - levantamiento,
+100,
+1 ));
+(await persona.trasladarse.por.eje.x( distancia_por_pasos * 1 / 4,
+200,
+1 ));
+(await persona.rotar.hombro.izquierdo( 0 + levantamiento,
+100,
+1 ));
+(await persona.rotar.codo.izquierdo( 0 + levantamiento,
+100,
+1 ));
+(await persona.rotar.rodilla.derecha( 0 + levantamiento,
+100,
+1 ));
+(await persona.rotar.pierna.derecha( 0 + levantamiento,
+100,
+1 ));
+(await persona.rotar.rodilla.derecha( 0 + levantamiento,
+100,
+1 ));
+(await persona.trasladarse.por.eje.x( distancia_por_pasos * 0 / 4,
+200,
+1 ));
+(await persona.rotar.rodilla.derecha( 0 - levantamiento,
+100,
+1 ));}
+(await persona.rotar.rodilla.derecha( 0 - levantamiento,
+100,
+1 ));
+} catch(error) {
+console.log(error);
+throw error;
+}
+
+};
+persona.caminar_2 = async function( x,
+y,
+z,
+ms = 500 ) {try {
+persona.restablecer.postura(  );
+pantalla.pintarse(  );
+const levantamiento = 20;
+const distancia_por_pasos = 30;
+const pasos = 10;
+for(let index = 0; index < pasos; index++) {(await persona.rotar.codo.derecho( 0 - levantamiento,
+100,
+1 ));
+(await persona.rotar.hombro.derecho( 0 - levantamiento,
+100,
+1 ));
+(await persona.rotar.pierna.izquierda( 0 - levantamiento,
+100,
+1 ));
+(await persona.rotar.rodilla.izquierda( 0 - levantamiento,
+100,
+1 ));
+(await persona.trasladarse.por.eje.x( distancia_por_pasos * 1 / 4,
+200,
+1 ));
+(await persona.rotar.hombro.derecho( 0 + levantamiento,
+100,
+1 ));
+(await persona.rotar.codo.derecho( 0 + levantamiento,
+100,
+1 ));
+(await persona.rotar.rodilla.izquierda( 0 + levantamiento,
+100,
+1 ));
+(await persona.rotar.pierna.izquierda( 0 + levantamiento,
+100,
+1 ));
+(await persona.rotar.rodilla.izquierda( 0 + levantamiento,
+100,
+1 ));
+(await persona.trasladarse.por.eje.x( distancia_por_pasos * 0 / 4,
+200,
+1 ));
+(await persona.rotar.rodilla.izquierda( 0 - levantamiento,
+100,
+1 ));
+(await persona.rotar.codo.izquierdo( 0 - levantamiento,
+100,
+1 ));
+(await persona.rotar.hombro.izquierdo( 0 - levantamiento,
+100,
+1 ));
+(await persona.rotar.pierna.derecha( 0 - levantamiento,
+100,
+1 ));
+(await persona.rotar.rodilla.derecha( 0 - levantamiento,
+100,
+1 ));
+(await persona.trasladarse.por.eje.x( distancia_por_pasos * 1 / 4,
+200,
+1 ));
+(await persona.rotar.hombro.izquierdo( 0 + levantamiento,
+100,
+1 ));
+(await persona.rotar.codo.izquierdo( 0 + levantamiento,
+100,
+1 ));
+(await persona.rotar.rodilla.derecha( 0 + levantamiento,
+100,
+1 ));
+(await persona.rotar.pierna.derecha( 0 + levantamiento,
+100,
+1 ));
+(await persona.rotar.rodilla.derecha( 0 + levantamiento,
+100,
+1 ));
+(await persona.trasladarse.por.eje.x( distancia_por_pasos * 0 / 4,
+200,
+1 ));
+(await persona.rotar.rodilla.derecha( 0 - levantamiento,
+100,
+1 ));}
+(await persona.rotar.rodilla.derecha( 0 - levantamiento,
+100,
+1 ));
+} catch(error) {
+console.log(error);
+throw error;
+}
+
+};
+return persona;
+} catch(error) {
+console.log(error);
+throw error;
+}
+
+};
+window.codigo_de_ejemplo = "\nhago persona.restablecer.estado(1).\ncreo largo como 20.\ncreo tiempo como 100.\ncreo pasos como 4.\ncreo distancia como 100.\ncreo distancia_pasos como distancia/pasos.\ndesde 0 hasta pasos {\n hago ~ persona.posicionar.hombro.derecho(   0-largo-largo,tiempo,1).\n hago ~ persona.posicionar.codo.derecho(     0+largo,tiempo,1).\n hago ~ persona.posicionar.hombro.izquierdo( 0+largo+largo,tiempo,1).\n hago ~ persona.posicionar.codo.izquierdo(   0-largo,tiempo,1).\n hago ~ persona.posicionar.hombro.izquierdo( 0+largo,tiempo,1).\n hago ~ persona.posicionar.hombro.derecho(   0-largo,tiempo,1).\n hago ~ Promise.all([\n  persona.posicionar.pierna.derecha(     0+largo,tiempo,0),\n  persona.posicionar.rodilla.derecha(    0+largo,tiempo,0),\n  persona.trasladarse.por.eje.x(0+distancia_pasos,tiempo,0)\n ]).\n hago pantalla.pintarse().\n hago ~ persona.posicionar.pierna.izquierda(   0+0,tiempo,1).\n hago ~ persona.posicionar.rodilla.izquierda(  0+largo-largo,tiempo,1).\n hago ~ persona.posicionar.pierna.derecha(     0-largo,tiempo,1).\n hago ~ persona.posicionar.rodilla.derecha(    0+largo,tiempo,1).\n hago ~ persona.posicionar.pierna.izquierda(   0+largo,tiempo,1).\n hago ~ persona.posicionar.rodilla.izquierda(  0+largo+largo,tiempo,1).\n}.\nhago persona.restablecer.postura(1).\n".trim(  );
 const ConstructorDeHomactogramasDeCastelog = Castelog.metodos.un_componente_vue2("ConstructorDeHomactogramasDeCastelog",
   "<div class=\"ConstructorDeHomactogramasDeCastelog Component win7\">"
  + "    <div class=\"editor_box\">"
@@ -59873,7 +60062,7 @@ const ConstructorDeHomactogramasDeCastelog = Castelog.metodos.un_componente_vue2
  + "  </div>",
   function(component) {return { data() {try {
 return { codigo_actual_js:"",
-codigo_actual:"".trim(  ),
+codigo_actual:this.$window.codigo_de_ejemplo,
 persona:undefined,
 fondo:undefined,
 pantalla:undefined,
@@ -59987,11 +60176,13 @@ this.mostrar_error( error );}
 },
 mounted() {try {
 console.log("Montada página de inicio.");
-this.juego = this.$window.homactografo( this.$refs.salida_del_canvas );
-this.persona = this.juego.persona;
+const juego = this.$window.homactografo( this.$refs.salida_del_canvas );
+this.juego = juego;
+this.persona = this.$window.extender_persona( juego.persona );
 this.fondo = this.juego.fondo;
 this.pantalla = this.juego.pantalla;
-this.codigo_actual = this.juego.utils.getLastScript(  );
+const ultimo_script_aplicado = this.juego.utils.getLastScript(  );
+this.codigo_actual = ultimo_script_aplicado || this.$window.codigo_de_ejemplo;
 setTimeout( () => {try {
 this.pantalla.pintarse(  );
 } catch(error) {
