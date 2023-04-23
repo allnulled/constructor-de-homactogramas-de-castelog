@@ -35,8 +35,8 @@ El script de ejemplo hace una forma de caminar:
 hago persona.restablecer.estado(1).
 creo largo como 20.
 creo tiempo como 100.
-creo pasos como 4.
-creo distancia como 100.
+creo pasos como 20.
+creo distancia como 200.
 creo distancia_pasos como distancia/pasos.
 desde 0 hasta pasos {
  hago ~ persona.posicionar.hombro.derecho(   0-largo-largo,tiempo,1).
@@ -52,9 +52,12 @@ desde 0 hasta pasos {
  ]).
  hago pantalla.pintarse().
  hago ~ persona.posicionar.pierna.izquierda(   0+0,tiempo,1).
- hago ~ persona.posicionar.rodilla.izquierda(  0+largo-largo,tiempo,1).
- hago ~ persona.posicionar.pierna.derecha(     0-largo,tiempo,1).
- hago ~ persona.posicionar.rodilla.derecha(    0+largo,tiempo,1).
+ hago ~ persona.posicionar.rodilla.izquierda(  0+largo,tiempo,1).
+ hago ~ Promise.all([
+  persona.posicionar.pierna.derecha(     0-largo,tiempo,1),
+  persona.posicionar.rodilla.derecha(    0+largo,tiempo,1),
+  persona.trasladarse.por.eje.x(0+distancia_pasos,tiempo,0)
+ ]).
  hago ~ persona.posicionar.pierna.izquierda(   0+largo,tiempo,1).
  hago ~ persona.posicionar.rodilla.izquierda(  0+largo+largo,tiempo,1).
 }.
