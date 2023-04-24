@@ -36,7 +36,7 @@ Ejecutable como documento HTML5
     <script src="js/homactografo.extensiones.js"></script>
 </head>
 <body>
-    <h5>Líneas de fuga</h5>
+    <h5>Homactograma de dos por la calle que se encuentran y se saludan</h5>
     <div class="canvas_box">
       <canvas id="canvas_for_demo"></canvas>
     </div>
