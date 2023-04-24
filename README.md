@@ -29,14 +29,12 @@ const {
 
 Desde el homactógrafo de `castelog` puedes acceder a estas variables directamente: `persona`, `fondo`, `pantalla` y `utils`.
 
-El script de ejemplo permite a la instancia `persona` la función de `caminar` en una posible versión:
+Los métodos de persona de bajo nivel engloban las funciones que dan la orden de mover una articulación o mover el PaloMan por alguno de los ejes dimensionales (`x`, `y` y `z`).
+
+Los métodos de persona de alto nivel engloban las funciones que dan la orden de hacer alguna acción, y que probablemente usen los métodos de persona de bajo nivel. Como métodos de alto nivel, de ejemplo, hay:
 
 ```calo
-```
-
-Esto se puede envolver en una función, y llamar desde ella a todo el proceso. Así, podemos hacer directamente:
-
-```calo
+hago ~ persona.decir("Un diálogo anunciará esta acción.").
 hago ~ persona.caminar(1,10,500,5,200).
 ```
 
@@ -74,7 +72,6 @@ Y de esa forma, conseguimos mover el monigote escribiendo solo 1 línea. Y así 
 
 | Métodos de persona de bajo nivel | Descripción |
 | ---- | ---- | 
-| `persona.decir("Mensaje")` | Método para escribir por pantalla texto. | 
 | `persona.pintarse()` | Método que pinta a la persona. Se debería usar solo el método `pantalla.pintarse`, y él llama a los `pintarse` de los demás objetos. | 
 | `persona.trasladarse.por.eje.x(pixels,milisegundos=0,pintar_despues=0)` | Incremento en el eje x. | 
 | `persona.trasladarse.por.eje.y(pixels,milisegundos=0,pintar_despues=0)` | Incremento en el eje y. | 
@@ -101,6 +98,7 @@ Y de esa forma, conseguimos mover el monigote escribiendo solo 1 línea. Y así 
 
 | Métodos de persona de alto nivel | Descripción |
 | ---- | ---- | 
+| `persona.decir("Mensaje")` | Método para escribir por pantalla texto. | 
 | `persona.caminar(direccion=1,distancia=50,milisegundos=1000,pasos=10,intensidad=20)` | Método para desplazar simulando movimiento. Si `direccion` vale `0` va a la izquierda, si vale `1` va a la derecha. La `distancia` son los píxeles del eje x. Los `milisegundos` es lo que quieres que dure todo el movimiento de caminar. Los `pasos` son el número de pasos que quieres que dé. La `intensidad` son los grados de ángulo que quieres que tenga al caminar. Un ángulo entre `10` y `45` será el razonable. | 
 
 Los métodos `rotar` y `posicionar` hacen lo mismo, al igual que `trasladarse` y `posicionarse`: pero el primero de cada par incrementa el valor relativamente al actual, mientras que el segundo se basa en el valor directamente.
