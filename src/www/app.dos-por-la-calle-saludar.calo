@@ -44,14 +44,7 @@ Ejecutable como documento HTML5
 </body>.
 
 asigno window.codigo_de_ejemplo como un código en texto donde {
-si window.globales_unicas es tipo indefinido {
-  asigno window.globales_unicas como {}.
-}.
-si window.globales_unicas.persona2 es tipo indefinido {
-  asigno window.globales_unicas.persona2 como una nueva utils.clases.Persona().
-  hago ~ pantalla.incluir(window.globales_unicas.persona2).
-}.
-desacoplo constantes { persona2 } a partir de window.globales_unicas.
+creo persona2 como pantalla.incorporar("persona2", una nueva utils.clases.Persona()).
 hago ~ persona.restablecer.postura().
 hago ~ persona.posicionarse.por.eje.x(50).
 hago ~ persona2.restablecer.postura().

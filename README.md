@@ -56,6 +56,7 @@ Y de esa forma, conseguimos hacer hablar al PaloMan o moverlo, pero escribiendo 
 | `pantalla.pintarse` | `-` | Pinta todos los elementos de la pantalla. |
 | `pantalla.pintarse.cada` | `Number:milisegundos` | Reinicia una llamada autoconcatenada y temporizada al método `pantalla.pintarse` automáticamente. |
 | `pantalla.incluir` | `Objeto:pintable` | Incluye un objeto en el pintado de la pantalla. Se usará el método `pintarse` del objeto para ello. |
+| `pantalla.incorporar` | `String:nombre`, `Objeto:pintable` | Incluye un objeto en el pintado de la pantalla. Además, lo registra en `pantalla.elementos_por_nombre[nombre]` y lo devuelve. |
 
 #### Propiedades de bajo nivel de `persona`:
 

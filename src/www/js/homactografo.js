@@ -767,6 +767,7 @@ window.homactografo = function(elemento_de_salida, settings = {}) {
     constructor(ctx) {
       this.contexto = ctx;
       this.elementos = [];
+      this.elementos_incorporados = {};
       this.pintarse = () => {
         for(let i=0; i<this.elementos.length; i++) {
           const elemento = this.elementos[i];
@@ -784,6 +785,12 @@ window.homactografo = function(elemento_de_salida, settings = {}) {
     incluir(elemento) {
       elemento.pantalla = this;
       this.elementos.push(elemento);
+    }
+    incorporar(nombre, elemento) {
+      elemento.pantalla = this;
+      this.elementos.push(elemento);
+      this.elementos_incorporados[nombre] = elemento;
+      return this.elementos_incorporados[nombre];
     }
   }
   const pantalla = new Pantalla(ctx);
