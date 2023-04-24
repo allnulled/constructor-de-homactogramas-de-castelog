@@ -98,7 +98,7 @@ Y de esa forma, conseguimos mover el monigote escribiendo solo 1 línea. Y así 
 | `persona.posicionar.pierna.izquierda` | `grados, milisegundos=0, pintar_despues=0` | Asignación del ángulo de la articulación específica. | 
 
 | Métodos de persona de alto nivel | Parámetros | Descripción |
-| ---- | ---- | 
+| ---- | ---- | ---- | 
 | `persona.decir` | `String:mensaje` | Método para escribir por pantalla texto. | 
 | `persona.caminar` | `Number:direccion=1, Number:distancia=50, Number:milisegundos=1000, Number:pasos=10, Number:intensidad=20` | Método para desplazar simulando movimiento. Si `direccion` vale `0` va a la izquierda, si vale `1` va a la derecha. La `distancia` son los píxeles del eje x. Los `milisegundos` es lo que quieres que dure todo el movimiento de caminar. Los `pasos` son el número de pasos que quieres que dé. La `intensidad` son los grados de ángulo que quieres que tenga al caminar. Un ángulo entre `10` y `45` será el razonable. | 
 
