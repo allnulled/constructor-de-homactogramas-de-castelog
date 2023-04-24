@@ -1,5 +1,5 @@
 
-// [castelog:html5izable] ACTIVADO con: {"autor":"allnulled","nombre":"app","version":"last","contenido":{"head":"<head>\n    <title>Homactógrafo Z</title>\n    <meta charset=\"utf8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <style>\n      .canvas_box {\n        background-color: #222;\n        box-shadow: 0 0 4px black;\n        text-align: center;\n        padding-top: 20px;\n        padding-bottom: 20px;\n      }\n      .w_100 {\n        width: 100%;\n      }\n      .win7 pre.salida_del_canvas {\n        min-height: 100px;\n        padding: 2px;\n        font-size: 10px;\n        border: 6px double #333;\n        background-color: #CCF;\n        color: #333;\n        text-shadow: 0 0 1px black;\n        font-family: Arial;\n        margin-top: 2px;\n        margin-bottom: 2px;\n      }\n    </style>\n    <script src=\"js/calo.js\"></script>\n    <script src=\"js/castelog-parser.js\"></script>\n    <script src=\"js/homactografo.js\"></script>\n</head>","body":"<body>\n    <div class=\"canvas_box\">\n      <canvas id=\"canvas_for_demo\"></canvas>\n    </div>\n    <div id=\"app\"></div>\n</body>"}}
+// [castelog:html5izable] ACTIVADO con: {"autor":"allnulled","nombre":"app","version":"last","contenido":{"head":"<head>\n    <title>Homactógrafo Z</title>\n    <meta charset=\"utf8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <style>\n      .canvas_box {\n        background-color: #222;\n        box-shadow: 0 0 4px black;\n        text-align: center;\n        padding-top: 20px;\n        padding-bottom: 20px;\n      }\n      .w_100 {\n        width: 100%;\n      }\n      .win7 pre.salida_del_canvas {\n        min-height: 100px;\n        padding: 2px;\n        font-size: 10px;\n        border: 6px double #333;\n        background-color: #CCF;\n        color: #333;\n        text-shadow: 0 0 1px black;\n        font-family: Arial;\n        margin-top: 2px;\n        margin-bottom: 2px;\n      }\n    </style>\n    <script src=\"js/calo.js\"></script>\n    <script src=\"js/castelog-parser.js\"></script>\n    <script src=\"js/homactografo.js\"></script>\n</head>","body":"<body>\n    <h5>Líneas de fuga</h5>\n    <div class=\"canvas_box\">\n      <canvas id=\"canvas_for_demo\"></canvas>\n    </div>\n    <div id=\"app\"></div>\n</body>"}}
 
 
 
@@ -59845,14 +59845,14 @@ Castelog.variables.operador.exclamacion.ejs.ui.dom.elemento = function(elemento 
 window.extender_persona = function( persona,
 pantalla ) {try {
 const caminar_1 = async function( direccion_arg,
-intensidad_arg,
+distancia_arg,
 tiempo_arg,
 pasos_arg,
-distancia_arg ) {try {
+intensidad_arg ) {try {
 const direccion = ( (!(typeof direccion_arg === 'undefined')) ? direccion_arg : 0 );
 const intensidad = ( (!(typeof intensidad_arg === 'undefined')) ? intensidad_arg : 20 );
-const tiempo = ( (!(typeof tiempo_arg === 'undefined')) ? tiempo_arg : 100 );
 const pasos = ( (!(typeof pasos_arg === 'undefined')) ? pasos_arg : 5 );
+const tiempo = ( (!(typeof tiempo_arg === 'undefined')) ? ( tiempo_arg / ( 10 * pasos ) ) : 100 );
 const distancia = ( (!(typeof distancia_arg === 'undefined')) ? distancia_arg : 100 );
 const distancia_pasos = distancia / pasos;
 if(direccion === 1) {

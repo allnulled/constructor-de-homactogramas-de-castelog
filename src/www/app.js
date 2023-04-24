@@ -59960,7 +59960,7 @@ tiempo,
 (await persona.posicionar.pierna.derecha( 0 - intensidad,
 tiempo,
 1 ));
-(await persona.posicionar.rodilla.derecha( 0 - intensidad - largo,
+(await persona.posicionar.rodilla.derecha( 0 - intensidad - intensidad,
 tiempo,
 1 ));}
 persona.restablecer.postura( 1 );

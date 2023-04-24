@@ -29,75 +29,9 @@ const {
 
 Desde el homactógrafo de `castelog` puedes acceder a estas variables directamente: `persona`, `fondo`, `pantalla` y `utils`.
 
-El script de ejemplo permite a toda instancia de `Persona` la función de `caminar` en una posible versión:
+El script de ejemplo permite a la instancia `persona` la función de `caminar` en una posible versión:
 
 ```calo
-creo caminar_1 como una función asíncrona con (direccion_arg, largo_arg, tiempo_arg, pasos_arg, distancia_arg) donde {
- creo direccion como direccion_arg o 0.        ### 1 o 2
- creo intensidad como intensidad_arg o 20.     ### grados de 360
- creo tiempo como tiempo_arg o 100.            ### milisegundos
- creo pasos como pasos_arg o 5.                ### pasos en los que se quiere partir
- creo distancia como distancia_arg o 100.      ### distancia total a recorrer
- creo distancia_pasos como distancia/pasos.    ### variable computada: distancia de cada paso
- si direccion es igual que 1 {
-  desde 0 hasta pasos {
-   hago ~ persona.posicionar.hombro.derecho(   0,tiempo,0).
-   hago ~ persona.posicionar.codo.derecho(     0+intensidad,tiempo,0).
-   hago ~ persona.posicionar.hombro.izquierdo( 0+intensidad+intensidad,tiempo,0).
-   hago ~ persona.posicionar.codo.izquierdo(   0-intensidad+intensidad,tiempo,1).
-   hago ~ Promise.all([
-    persona.posicionar.pierna.derecha(     0,tiempo,0),
-    persona.posicionar.rodilla.derecha(    0+intensidad,tiempo,0),
-    persona.trasladarse.por.eje.x(         0+distancia_pasos,tiempo,0)
-   ]).
-   hago pantalla.pintarse().
-   hago ~ Promise.all([
-    persona.posicionar.hombro.izquierdo( 0+intensidad,tiempo,0),
-    persona.posicionar.codo.izquierdo(   0-intensidad,tiempo,0),
-    persona.posicionar.hombro.derecho(   0-intensidad,tiempo,0)
-   ]).
-   hago ~ persona.posicionar.pierna.izquierda(   0+0,tiempo,1).
-   hago ~ persona.posicionar.rodilla.izquierda(  0+intensidad,tiempo,1).
-   hago ~ Promise.all([
-    persona.posicionar.pierna.derecha(     0-intensidad,tiempo,1),
-    persona.posicionar.rodilla.derecha(    0+intensidad,tiempo,1),
-    persona.trasladarse.por.eje.x(         0+distancia_pasos,tiempo,0)
-   ]).
-   hago ~ persona.posicionar.pierna.izquierda(   0+intensidad,tiempo,1).
-   hago ~ persona.posicionar.rodilla.izquierda(  0+intensidad+intensidad,tiempo,1).
-  }.
-  hago persona.restablecer.postura(1).
- } pero si direccion es igual que 0 {
-  desde 0 hasta pasos {
-   hago ~ persona.posicionar.hombro.izquierdo(   0,tiempo,0).
-   hago ~ persona.posicionar.codo.izquierdo(     0-intensidad,tiempo,0).
-   hago ~ persona.posicionar.hombro.derecho( 0-intensidad-intensidad,tiempo,0).
-   hago ~ persona.posicionar.codo.derecho(   0+intensidad-intensidad,tiempo,1).
-   hago ~ Promise.all([
-    persona.posicionar.pierna.izquierda(     0,tiempo,0),
-    persona.posicionar.rodilla.izquierda(    0-intensidad,tiempo,0),
-    persona.trasladarse.por.eje.x(           0-distancia_pasos,tiempo,0)
-   ]).
-   hago pantalla.pintarse().
-   hago ~ Promise.all([
-    persona.posicionar.hombro.derecho(     0-intensidad,tiempo,0),
-    persona.posicionar.codo.derecho(       0+intensidad,tiempo,0),
-    persona.posicionar.hombro.izquierdo(   0+intensidad,tiempo,0)
-   ]).
-   hago ~ persona.posicionar.pierna.derecha(   0-0,tiempo,1).
-   hago ~ persona.posicionar.rodilla.derecha(  0-intensidad,tiempo,1).
-   hago ~ Promise.all([
-    persona.posicionar.pierna.izquierda(     0+intensidad,tiempo,1),
-    persona.posicionar.rodilla.izquierda(    0-intensidad,tiempo,1),
-    persona.trasladarse.por.eje.x(           0-distancia_pasos,tiempo,0)
-   ]).
-   hago ~ persona.posicionar.pierna.derecha(   0-intensidad,tiempo,1).
-   hago ~ persona.posicionar.rodilla.derecha(  0-intensidad-largo,tiempo,1).
-  }.
-  hago persona.restablecer.postura(1).
- } y si no lanzo un nuevo Error("Solo se soporta direccion 0 o 1").
-}.
-asigno persona.prototype.caminar como caminar_1.
 ```
 
 Esto se puede envolver en una función, y llamar desde ella a todo el proceso. Así, podemos hacer directamente:
@@ -106,9 +40,7 @@ Esto se puede envolver en una función, y llamar desde ella a todo el proceso. A
 hago ~ persona.caminar(1,10,500,5,200).
 ```
 
-Y de esa forma, conseguimos mover el monigote escribiendo solo 1 línea.
-
-Y así se pueden ir añadiendo métodos, y ampliar las capacidades de la `persona`.
+Y de esa forma, conseguimos mover el monigote escribiendo solo 1 línea. Y así se pueden ir añadiendo métodos, y ampliar las capacidades de la `persona`: ampliando el `utils.clases.Persona.prototype` con métodos tipo prototipo.
 
 ### Referencia
 
@@ -140,7 +72,7 @@ Y así se pueden ir añadiendo métodos, y ampliar las capacidades de la `person
 | `apertura_de_la_rodilla_izq` | `Number` | Grados/360º | `0` | Apertura de la rodilla izquierda |
 | `apertura_de_la_rodilla_der` | `Number` | Grados/360º | `0` | Apertura de la rodilla derecha |
 
-| Métodos de persona | Descripción |
+| Métodos de persona de bajo nivel | Descripción |
 | ---- | ---- | 
 | `persona.decir("Mensaje")` | Método para escribir por pantalla texto. | 
 | `persona.pintarse()` | Método que pinta a la persona. Se debería usar solo el método `pantalla.pintarse`, y él llama a los `pintarse` de los demás objetos. | 
@@ -166,6 +98,10 @@ Y así se pueden ir añadiendo métodos, y ampliar las capacidades de la `person
 | `persona.posicionar.rodilla.izquierda(grados,milisegundos=0,pintar_despues=0)` | Asignación del ángulo de la articulación específica. | 
 | `persona.posicionar.pierna.derecha(grados,milisegundos=0,pintar_despues=0)` | Asignación del ángulo de la articulación específica. | 
 | `persona.posicionar.pierna.izquierda(grados,milisegundos=0,pintar_despues=0)` | Asignación del ángulo de la articulación específica. | 
+
+| Métodos de persona de alto nivel | Descripción |
+| ---- | ---- | 
+| `persona.caminar(direccion=1,distancia=50,milisegundos=1000,pasos=10,intensidad=20)` | Método para desplazar simulando movimiento. Si `direccion` vale `0` va a la izquierda, si vale `1` va a la derecha. La `distancia` son los píxeles del eje x. Los `milisegundos` es lo que quieres que dure todo el movimiento de caminar. Los `pasos` son el número de pasos que quieres que dé. La `intensidad` son los grados de ángulo que quieres que tenga al caminar. Un ángulo entre `10` y `45` será el razonable. | 
 
 Los métodos `rotar` y `posicionar` hacen lo mismo, al igual que `trasladarse` y `posicionarse`: pero el primero de cada par incrementa el valor relativamente al actual, mientras que el segundo se basa en el valor directamente.
 

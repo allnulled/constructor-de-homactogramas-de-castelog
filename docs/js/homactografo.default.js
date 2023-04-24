@@ -1,4 +1,4 @@
-function play(elemento_de_salida) {
+window.homactografo = function(elemento_de_salida, settings = {}) {
   const utils = {
     toRadians: function (angle) {
       return angle * (Math.PI / 180);
@@ -21,7 +21,7 @@ function play(elemento_de_salida) {
       }
     },
     printar: function(msg) {
-      elemento_de_salida.textContent += "\n" + msg;
+      elemento_de_salida.textContent = msg + "\n" + elemento_de_salida.textContent;
     },
     una_espera: function(callback, secs) {
       return new Promise(ok => {
@@ -32,7 +32,317 @@ function play(elemento_de_salida) {
       });
     }
   };
-  const SETTINGS = {
+  const API_FACTORY = {
+    posicionarse_por_eje_x(scope) {
+      return (diff, secs = 0, pintar_despues = 0) => {
+        const accion_con_demora = utils.una_espera(() => {
+          scope.x = diff;
+        }, secs);
+        if (pintar_despues) {
+          accion_con_demora.then(resultado => {
+            scope.pantalla.pintarse();
+            return resultado;
+          });
+        }
+        return accion_con_demora;
+      };
+    },
+    posicionarse_por_eje_y(scope) {
+      return (diff, secs = 0, pintar_despues = 0) => {
+        const accion_con_demora = utils.una_espera(() => {
+          scope.y = diff;
+        }, secs);
+        if (pintar_despues) {
+          accion_con_demora.then(resultado => {
+            scope.pantalla.pintarse();
+            return resultado;
+          });
+        }
+        return accion_con_demora;
+      };
+    },
+    posicionarse_por_eje_z(scope) {
+      return (diff, secs = 0, pintar_despues = 0) => {
+        const accion_con_demora = utils.una_espera(() => {
+          scope.z = diff;
+        }, secs);
+        if (pintar_despues) {
+          accion_con_demora.then(resultado => {
+            scope.pantalla.pintarse();
+            return resultado;
+          });
+        }
+        return accion_con_demora;
+      };
+    },
+    trasladarse_por_eje_x(scope) {
+      return (diff, secs = 0, pintar_despues = 0) => {
+        const accion_con_demora = utils.una_espera(() => {
+          scope.x += diff;
+        }, secs);
+        if(pintar_despues) {
+          accion_con_demora.then(resultado => {
+            scope.pantalla.pintarse();
+            return resultado;
+          });
+        }
+        return accion_con_demora;
+      };
+    },
+    trasladarse_por_eje_y(scope) {
+      return (diff, secs = 0, pintar_despues = 0) => {
+        const accion_con_demora = utils.una_espera(() => {
+          scope.y += diff;
+        }, secs);
+        if(pintar_despues) {
+          accion_con_demora.then(resultado => {
+            scope.pantalla.pintarse();
+            return resultado;
+          });
+        }
+        return accion_con_demora;
+      };
+    },
+    trasladarse_por_eje_z(scope) {
+      return (diff, secs = 0, pintar_despues = 0) => {
+        const accion_con_demora = utils.una_espera(() => {
+          scope.z += diff;
+        }, secs);
+        if(pintar_despues) {
+          accion_con_demora.then(resultado => {
+            scope.pantalla.pintarse();
+            return resultado;
+          });
+        }
+        return accion_con_demora;
+      };
+    },
+    rotar_hombro_izquierdo(scope) {
+      return (diff, secs = 0, pintar_despues = 0) => {
+        const accion_con_demora = utils.una_espera(() => {
+          scope.apertura_del_hombro_izq += diff;
+        }, secs);
+        if(pintar_despues) {
+          accion_con_demora.then(resultado => {
+            scope.pantalla.pintarse();
+            return resultado;
+          });
+        }
+        return accion_con_demora;
+      };
+    },
+    rotar_hombro_derecho(scope) {
+      return (diff, secs = 0, pintar_despues = 0) => {
+        const accion_con_demora = utils.una_espera(() => {
+          scope.apertura_del_hombro_der += diff;
+        }, secs);
+        if(pintar_despues) {
+          accion_con_demora.then(resultado => {
+            scope.pantalla.pintarse();
+            return resultado;
+          });
+        }
+        return accion_con_demora;
+      };
+    },
+    rotar_codo_izquierdo(scope) {
+      return (diff, secs = 0, pintar_despues = 0) => {
+        const accion_con_demora = utils.una_espera(() => {
+          scope.apertura_del_codo_izq += diff;
+        }, secs);
+        if(pintar_despues) {
+          accion_con_demora.then(resultado => {
+            scope.pantalla.pintarse();
+            return resultado;
+          });
+        }
+        return accion_con_demora;
+      };
+    },
+    rotar_codo_derecho(scope) {
+      return (diff, secs = 0, pintar_despues = 0) => {
+        const accion_con_demora = utils.una_espera(() => {
+          scope.apertura_del_codo_der += diff;
+        }, secs);
+        if(pintar_despues) {
+          accion_con_demora.then(resultado => {
+            scope.pantalla.pintarse();
+            return resultado;
+          });
+        }
+        return accion_con_demora;
+      };
+    },
+    rotar_pierna_izquierda(scope) {
+      return (diff, secs = 0, pintar_despues = 0) => {
+        const accion_con_demora = utils.una_espera(() => {
+          scope.apertura_de_la_pierna_izq += diff;
+        }, secs);
+        if(pintar_despues) {
+          accion_con_demora.then(resultado => {
+            scope.pantalla.pintarse();
+            return resultado;
+          });
+        }
+        return accion_con_demora;
+      };
+    },
+    rotar_pierna_derecha(scope) {
+      return (diff, secs = 0, pintar_despues = 0) => {
+        const accion_con_demora = utils.una_espera(() => {
+          scope.apertura_de_la_pierna_der += diff;
+        }, secs);
+        if(pintar_despues) {
+          accion_con_demora.then(resultado => {
+            scope.pantalla.pintarse();
+            return resultado;
+          });
+        }
+        return accion_con_demora;
+      };
+    },
+    rotar_rodilla_izquierda(scope) {
+      return (diff, secs = 0, pintar_despues = 0) => {
+        const accion_con_demora = utils.una_espera(() => {
+          scope.apertura_de_la_rodilla_izq += diff;
+        }, secs);
+        if(pintar_despues) {
+          accion_con_demora.then(resultado => {
+            scope.pantalla.pintarse();
+            return resultado;
+          });
+        }
+        return accion_con_demora;
+      };
+    },
+    rotar_rodilla_derecha(scope) {
+      return (diff, secs = 0, pintar_despues = 0) => {
+        const accion_con_demora = utils.una_espera(() => {
+          scope.apertura_de_la_rodilla_der += diff;
+        }, secs);
+        if(pintar_despues) {
+          accion_con_demora.then(resultado => {
+            scope.pantalla.pintarse();
+            return resultado;
+          });
+        }
+        return accion_con_demora;
+      };
+    },
+    posicionar_hombro_izquierdo(scope) {
+      return (diff, secs = 0, pintar_despues = 0) => {
+        const accion_con_demora = utils.una_espera(() => {
+          scope.apertura_del_hombro_izq = scope.estado_inicial.apertura_del_hombro_izq + diff;
+        }, secs);
+        if(pintar_despues) {
+          accion_con_demora.then(resultado => {
+            scope.pantalla.pintarse();
+            return resultado;
+          });
+        }
+        return accion_con_demora;
+      };
+    },
+    posicionar_hombro_derecho(scope) {
+      return (diff, secs = 0, pintar_despues = 0) => {
+        const accion_con_demora = utils.una_espera(() => {
+          scope.apertura_del_hombro_der = scope.estado_inicial.apertura_del_hombro_der + diff;
+        }, secs);
+        if(pintar_despues) {
+          accion_con_demora.then(resultado => {
+            scope.pantalla.pintarse();
+            return resultado;
+          });
+        }
+        return accion_con_demora;
+      };
+    },
+    posicionar_codo_izquierdo(scope) {
+      return (diff, secs = 0, pintar_despues = 0) => {
+        const accion_con_demora = utils.una_espera(() => {
+          scope.apertura_del_codo_izq = scope.estado_inicial.apertura_del_codo_izq + diff;
+        }, secs);
+        if(pintar_despues) {
+          accion_con_demora.then(resultado => {
+            scope.pantalla.pintarse();
+            return resultado;
+          });
+        }
+        return accion_con_demora;
+      };
+    },
+    posicionar_codo_derecho(scope) {
+      return (diff, secs = 0, pintar_despues = 0) => {
+        const accion_con_demora = utils.una_espera(() => {
+          scope.apertura_del_codo_der = scope.estado_inicial.apertura_del_codo_der + diff;
+        }, secs);
+        if(pintar_despues) {
+          accion_con_demora.then(resultado => {
+            scope.pantalla.pintarse();
+            return resultado;
+          });
+        }
+        return accion_con_demora;
+      };
+    },
+    posicionar_pierna_izquierda(scope) {
+      return (diff, secs = 0, pintar_despues = 0) => {
+        const accion_con_demora = utils.una_espera(() => {
+          scope.apertura_de_la_pierna_izq = scope.estado_inicial.apertura_de_la_pierna_izq + diff;
+        }, secs);
+        if(pintar_despues) {
+          accion_con_demora.then(resultado => {
+            scope.pantalla.pintarse();
+            return resultado;
+          });
+        }
+        return accion_con_demora;
+      };
+    },
+    posicionar_pierna_derecha(scope) {
+      return (diff, secs = 0, pintar_despues = 0) => {
+        const accion_con_demora = utils.una_espera(() => {
+          scope.apertura_de_la_pierna_der = scope.estado_inicial.apertura_de_la_pierna_der + diff;
+        }, secs);
+        if(pintar_despues) {
+          accion_con_demora.then(resultado => {
+            scope.pantalla.pintarse();
+            return resultado;
+          });
+        }
+        return accion_con_demora;
+      };
+    },
+    posicionar_rodilla_izquierda(scope) {
+      return (diff, secs = 0, pintar_despues = 0) => {
+        const accion_con_demora = utils.una_espera(() => {
+          scope.apertura_de_la_rodilla_izq = scope.estado_inicial.apertura_de_la_rodilla_izq + diff;
+        }, secs);
+        if(pintar_despues) {
+          accion_con_demora.then(resultado => {
+            scope.pantalla.pintarse();
+            return resultado;
+          });
+        }
+        return accion_con_demora;
+      };
+    },
+    posicionar_rodilla_derecha(scope) {
+      return (diff, secs = 0, pintar_despues = 0) => {
+        const accion_con_demora = utils.una_espera(() => {
+          scope.apertura_de_la_rodilla_der = scope.estado_inicial.apertura_de_la_rodilla_der + diff;
+        }, secs);
+        if(pintar_despues) {
+          accion_con_demora.then(resultado => {
+            scope.pantalla.pintarse();
+            return resultado;
+          });
+        }
+        return accion_con_demora;
+      };
+    }
+  };
+  const SETTINGS = Object.assign({
     width: 500,
     height: 500,
     depth: 4000,
@@ -40,7 +350,7 @@ function play(elemento_de_salida) {
     color_de_articulaciones: "#CCC",
     color_de_fondo: "#66b7d8",
     color_de_cesped: "#00ba41"
-  };
+  }, settings);
   const canvas = document.getElementById('canvas_for_demo');
   canvas.width = SETTINGS.width;
   canvas.height = SETTINGS.height;
@@ -86,18 +396,7 @@ function play(elemento_de_salida) {
         x: 80,
         y: SETTINGS.height - (250),
         z: 1,
-        radio_de_cabeza: 25,
-        cabeza_con_cuello: 0,
-        cuello_con_columna: 0,
-        hombro_izquierdo: 0,
-        hombro_derecho: 0,
-        codo_izquierdo: 0,
-        codo_derecho: 0,
-        columna_con_cadera: 0,
-        cadera_izquierda: 0,
-        cadera_derecha: 0,
-        rodilla_izquierda: 0,
-        rodilla_derecha: 0,
+        largo_de_radio_de_cabeza: 25,
         largo_de_cuello: 10,
         largo_de_cadera: 20,
         largo_de_espalda: 30,
@@ -116,70 +415,83 @@ function play(elemento_de_salida) {
         apertura_de_la_rodilla_der: 180,
       };
       this.restablecer = {
-        postura: () => {
+        postura: (pintar_despues = 0) => {
           const estado_inicial = Object.assign({}, this.estado_inicial);
           delete estado_inicial.x;
           delete estado_inicial.y;
           delete estado_inicial.z;
           Object.assign(this, estado_inicial);
+          if(pintar_despues) {
+            this.pantalla.pintarse();
+          }
         },
-        estado: () => {
+        estado: (pintar_despues = 0) => {
           Object.assign(this, Object.assign({}, this.estado_inicial));
+          if (pintar_despues) {
+            this.pantalla.pintarse();
+          }
         }
       };
       this.restablecer.estado();
       this.trasladarse = {
         por: {
           eje: {
-            x: (diff, secs = 0) => utils.una_espera(() => this.x += diff, secs),
-            y: (diff, secs = 0) => utils.una_espera(() => this.y += diff, secs),
-            z: (diff, secs = 0) => utils.una_espera(() => this.z += diff, secs)
+            x: API_FACTORY.trasladarse_por_eje_x(this),
+            y: API_FACTORY.trasladarse_por_eje_y(this),
+            z: API_FACTORY.trasladarse_por_eje_z(this),
+          }
+        }
+      };
+      this.posicionarse = {
+        por: {
+          eje: {
+            x: API_FACTORY.posicionarse_por_eje_x(this),
+            y: API_FACTORY.posicionarse_por_eje_y(this),
+            z: API_FACTORY.posicionarse_por_eje_z(this),
           }
         }
       };
       this.rotar = {
         hombro: {
-          izquierdo: (diff, secs = 0) => utils.una_espera(() => this.apertura_del_hombro_izq += diff, secs),
-          derecho: (diff, secs = 0) => utils.una_espera(() => this.apertura_del_hombro_der += diff, secs)
+          izquierdo: API_FACTORY.rotar_hombro_izquierdo(this),
+          derecho: API_FACTORY.rotar_hombro_derecho(this),
         },
         codo: {
-          izquierdo: (diff, secs = 0) => utils.una_espera(() => this.apertura_del_codo_izq += diff, secs),
-          derecho: (diff, secs = 0) => utils.una_espera(() => this.apertura_del_codo_der += diff, secs)
+          izquierdo: API_FACTORY.rotar_codo_izquierdo(this),
+          derecho: API_FACTORY.rotar_codo_derecho(this),
         },
         pierna: {
-          izquierda: (diff, secs = 0) => utils.una_espera(() => this.apertura_del_pierna_izq += diff, secs),
-          derecha: (diff, secs = 0) => utils.una_espera(() => this.apertura_del_pierna_der += diff, secs)
+          izquierda: API_FACTORY.rotar_pierna_izquierda(this),
+          derecha: API_FACTORY.rotar_pierna_derecha(this),
         },
         rodilla: {
-          izquierda: (diff, secs = 0) => utils.una_espera(() => this.apertura_del_rodilla_izq += diff, secs),
-          derecha: (diff, secs = 0) => utils.una_espera(() => this.apertura_del_rodilla_der += diff, secs)
+          izquierda: API_FACTORY.rotar_rodilla_izquierda(this),
+          derecha: API_FACTORY.rotar_rodilla_derecha(this),
         }
       };
       this.posicionar = {
         hombro: {
-          izquierdo: (diff, secs = 0) => utils.una_espera(() => this.apertura_del_hombro_izq = this.estado_inicial.apertura_del_hombro_izq + diff, secs),
-          derecho: (diff, secs = 0) => utils.una_espera(() => this.apertura_del_hombro_der = this.estado_inicial.apertura_del_hombro_der + diff, secs)
+          izquierdo: API_FACTORY.posicionar_hombro_izquierdo(this),
+          derecho: API_FACTORY.posicionar_hombro_derecho(this),
         },
         codo: {
-          izquierdo: (diff, secs = 0) => utils.una_espera(() => this.apertura_del_codo_izq = this.estado_inicial.apertura_del_codo_izq + diff, secs),
-          derecho: (diff, secs = 0) => utils.una_espera(() => this.apertura_del_codo_der = this.estado_inicial.apertura_del_codo_der + diff, secs)
+          izquierdo: API_FACTORY.posicionar_codo_izquierdo(this),
+          derecho: API_FACTORY.posicionar_codo_derecho(this),
         },
         pierna: {
-          izquierda: (diff, secs = 0) => utils.una_espera(() => this.apertura_del_pierna_izq = this.estado_inicial.apertura_del_pierna_izq + diff, secs),
-          derecha: (diff, secs = 0) => utils.una_espera(() => this.apertura_del_pierna_der = this.estado_inicial.apertura_del_pierna_der + diff, secs)
+          izquierda: API_FACTORY.posicionar_pierna_izquierda(this),
+          derecha: API_FACTORY.posicionar_pierna_derecha(this),
         },
         rodilla: {
-          izquierda: (diff, secs = 0) => utils.una_espera(() => this.apertura_del_rodilla_izq = this.estado_inicial.apertura_del_rodilla_izq + diff, secs),
-          derecha: (diff, secs = 0) => utils.una_espera(() => this.apertura_del_rodilla_der = this.estado_inicial.apertura_del_rodilla_der + diff, secs)
+          izquierda: API_FACTORY.posicionar_rodilla_izquierda(this),
+          derecha: API_FACTORY.posicionar_rodilla_derecha(this),
         }
       };
       this.con = {
         cacheo: {},
         profundidad: (id) => {
-          console.log("con.profunidad: " + id);
           if(!(id in this.con.cacheo)) {
             this.con.cacheo[id] = this[id];
-            //@TODO: recalcular en función de Z
             const valores_originales = {
               largo_de_antebrazo: 50,
               largo_de_antepierna: 70,
@@ -189,7 +501,7 @@ function play(elemento_de_salida) {
               largo_de_cuello: 10,
               largo_de_espalda: 30,
               largo_de_pierna: 60,
-              radio_de_cabeza: 25,
+              largo_de_radio_de_cabeza: 25,
               x: 180,
               y: 250,
               z: 1
@@ -235,7 +547,7 @@ function play(elemento_de_salida) {
         ctx.beginPath();
         const cabeza_origen_x = this.con.profundidad("x");
         const cabeza_origen_y = this.con.profundidad("y");
-        const cabeza_radio = this.con.profundidad("radio_de_cabeza");
+        const cabeza_radio = this.con.profundidad("largo_de_radio_de_cabeza");
         ctx.arc(cabeza_origen_x, cabeza_origen_y, cabeza_radio, 0, Math.PI * 2, true);
         ctx.fillStyle = SETTINGS.color_de_articulaciones;
         ctx.fill();
@@ -246,9 +558,9 @@ function play(elemento_de_salida) {
       }
       Proceso_pintar_cuello: {
         const cuello_origen_x = this.con.profundidad("x");
-        const cuello_origen_y = this.con.profundidad("y") + this.con.profundidad("radio_de_cabeza");
+        const cuello_origen_y = this.con.profundidad("y") + this.con.profundidad("largo_de_radio_de_cabeza");
         const cuello_destino_x = this.con.profundidad("x");
-        const cuello_destino_y = this.con.profundidad("y") + this.con.profundidad("radio_de_cabeza") + this.con.profundidad("largo_de_cuello");
+        const cuello_destino_y = this.con.profundidad("y") + this.con.profundidad("largo_de_radio_de_cabeza") + this.con.profundidad("largo_de_cuello");
         punto_del_cuello_bajo = [cuello_destino_x, cuello_destino_y];
         ctx.beginPath();
         ctx.moveTo(cuello_origen_x, cuello_origen_y);
@@ -476,12 +788,12 @@ function play(elemento_de_salida) {
   const persona = new Persona();
   pantalla.incluir(fondo);
   pantalla.incluir(persona);
-  return { pantalla, fondo, persona, utils };
+  utils.clases = {};
+  utils.clases.Persona = Persona;
+  utils.clases.Fondo = Fondo;
+  utils.clases.Pantalla = Pantalla;
+  const instancia_de_homactografo = { pantalla, fondo, persona, utils };
+  window.homac001 = instancia_de_homactografo;
+  return instancia_de_homactografo;
 };
-
-window.play = play;
-
-window.addEventListener("load", play);
-
-
-
+window.addEventListener("load", window.homactografo);

@@ -1,5 +1,5 @@
 
-// [castelog:html5izable] ACTIVADO con: {"autor":"allnulled","nombre":"app","version":"last","contenido":{"head":"<head>\n    <title>Homactógrafo Z</title>\n    <meta charset=\"utf8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <style>\n      .canvas_box {\n        background-color: #222;\n        box-shadow: 0 0 4px black;\n        text-align: center;\n        padding-top: 20px;\n        padding-bottom: 20px;\n      }\n      .w_100 {\n        width: 100%;\n      }\n      .win7 pre.salida_del_canvas {\n        min-height: 100px;\n        padding: 2px;\n        font-size: 10px;\n        border: 6px double #333;\n        background-color: #CCF;\n        color: #333;\n        text-shadow: 0 0 1px black;\n        font-family: Arial;\n        margin-top: 2px;\n        margin-bottom: 2px;\n      }\n    </style>\n    <script src=\"js/calo.js\"></script>\n    <script src=\"js/castelog-parser.js\"></script>\n    <script src=\"js/homactografo.js\"></script>\n</head>","body":"<body>\n    <div class=\"canvas_box\">\n      <canvas id=\"canvas_for_demo\"></canvas>\n    </div>\n    <div id=\"app\"></div>\n</body>"}}
+// [castelog:html5izable] ACTIVADO con: {"autor":"allnulled","nombre":"app","version":"last","contenido":{"head":"<head>\n    <title>Homactógrafo Z</title>\n    <meta charset=\"utf8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <style>\n      .canvas_box {\n        background-color: #222;\n        box-shadow: 0 0 4px black;\n        text-align: center;\n        padding-top: 20px;\n        padding-bottom: 20px;\n      }\n      .w_100 {\n        width: 100%;\n      }\n      .win7 pre.salida_del_canvas {\n        min-height: 100px;\n        padding: 2px;\n        font-size: 10px;\n        border: 6px double #333;\n        background-color: #CCF;\n        color: #333;\n        text-shadow: 0 0 1px black;\n        font-family: Arial;\n        margin-top: 2px;\n        margin-bottom: 2px;\n      }\n    </style>\n    <script src=\"js/calo.js\"></script>\n    <script src=\"js/castelog-parser.js\"></script>\n    <script src=\"js/homactografo.js\"></script>\n</head>","body":"<body>\n    <h5>Líneas de fuga</h5>\n    <div class=\"canvas_box\">\n      <canvas id=\"canvas_for_demo\"></canvas>\n    </div>\n    <div id=\"app\"></div>\n</body>"}}
 
 
 
@@ -59842,128 +59842,128 @@ Castelog.variables.operador.exclamacion.ejs.ui.dom.elemento = function(elemento 
 ////////////////////////////////////////// Aquí termina el script de Castelog //
 ////////////////////////////////////////////////////////////////////////////////
 
-window.extender_persona = function( persona,
+window.extender_persona_prototipo = function( persona,
 pantalla ) {try {
-const caminar_1 = async function( direccion_arg,
-intensidad_arg,
+persona.caminar = async function( direccion_arg,
+distancia_arg,
 tiempo_arg,
 pasos_arg,
-distancia_arg ) {try {
+intensidad_arg ) {try {
 const direccion = ( (!(typeof direccion_arg === 'undefined')) ? direccion_arg : 0 );
 const intensidad = ( (!(typeof intensidad_arg === 'undefined')) ? intensidad_arg : 20 );
-const tiempo = ( (!(typeof tiempo_arg === 'undefined')) ? tiempo_arg : 100 );
 const pasos = ( (!(typeof pasos_arg === 'undefined')) ? pasos_arg : 5 );
+const tiempo = ( (!(typeof tiempo_arg === 'undefined')) ? ( tiempo_arg / ( 10 * pasos ) ) : 100 );
 const distancia = ( (!(typeof distancia_arg === 'undefined')) ? distancia_arg : 100 );
 const distancia_pasos = distancia / pasos;
 if(direccion === 1) {
-for(let index = 0; index < pasos; index++) {(await persona.posicionar.hombro.derecho( 0,
+for(let index = 0; index < pasos; index++) {(await this.posicionar.hombro.derecho( 0,
 tiempo,
 0 ));
-(await persona.posicionar.codo.derecho( 0 + intensidad,
+(await this.posicionar.codo.derecho( 0 + intensidad,
 tiempo,
 0 ));
-(await persona.posicionar.hombro.izquierdo( 0 + intensidad + intensidad,
+(await this.posicionar.hombro.izquierdo( 0 + intensidad + intensidad,
 tiempo,
 0 ));
-(await persona.posicionar.codo.izquierdo( 0 - intensidad + intensidad,
+(await this.posicionar.codo.izquierdo( 0 - intensidad + intensidad,
 tiempo,
 1 ));
-(await Promise.all( [ persona.posicionar.pierna.derecha( 0,
+(await Promise.all( [ this.posicionar.pierna.derecha( 0,
 tiempo,
 0 ),
-persona.posicionar.rodilla.derecha( 0 + intensidad,
+this.posicionar.rodilla.derecha( 0 + intensidad,
 tiempo,
 0 ),
-persona.trasladarse.por.eje.x( 0 + distancia_pasos,
+this.trasladarse.por.eje.x( 0 + distancia_pasos,
 tiempo,
 0 ) ] ));
 pantalla.pintarse(  );
-(await Promise.all( [ persona.posicionar.hombro.izquierdo( 0 + intensidad,
+(await Promise.all( [ this.posicionar.hombro.izquierdo( 0 + intensidad,
 tiempo,
 0 ),
-persona.posicionar.codo.izquierdo( 0 - intensidad,
+this.posicionar.codo.izquierdo( 0 - intensidad,
 tiempo,
 0 ),
-persona.posicionar.hombro.derecho( 0 - intensidad,
+this.posicionar.hombro.derecho( 0 - intensidad,
 tiempo,
 0 ) ] ));
-(await persona.posicionar.pierna.izquierda( 0 + 0,
+(await this.posicionar.pierna.izquierda( 0 + 0,
 tiempo,
 1 ));
-(await persona.posicionar.rodilla.izquierda( 0 + intensidad,
+(await this.posicionar.rodilla.izquierda( 0 + intensidad,
 tiempo,
 1 ));
-(await Promise.all( [ persona.posicionar.pierna.derecha( 0 - intensidad,
+(await Promise.all( [ this.posicionar.pierna.derecha( 0 - intensidad,
 tiempo,
 1 ),
-persona.posicionar.rodilla.derecha( 0 + intensidad,
+this.posicionar.rodilla.derecha( 0 + intensidad,
 tiempo,
 1 ),
-persona.trasladarse.por.eje.x( 0 + distancia_pasos,
+this.trasladarse.por.eje.x( 0 + distancia_pasos,
 tiempo,
 0 ) ] ));
-(await persona.posicionar.pierna.izquierda( 0 + intensidad,
+(await this.posicionar.pierna.izquierda( 0 + intensidad,
 tiempo,
 1 ));
-(await persona.posicionar.rodilla.izquierda( 0 + intensidad + intensidad,
+(await this.posicionar.rodilla.izquierda( 0 + intensidad + intensidad,
 tiempo,
 1 ));}
-persona.restablecer.postura( 1 );
+this.restablecer.postura( 1 );
 }
 else if(direccion === 0) {
-for(let index = 0; index < pasos; index++) {(await persona.posicionar.hombro.izquierdo( 0,
+for(let index = 0; index < pasos; index++) {(await this.posicionar.hombro.izquierdo( 0,
 tiempo,
 0 ));
-(await persona.posicionar.codo.izquierdo( 0 - intensidad,
+(await this.posicionar.codo.izquierdo( 0 - intensidad,
 tiempo,
 0 ));
-(await persona.posicionar.hombro.derecho( 0 - intensidad - intensidad,
+(await this.posicionar.hombro.derecho( 0 - intensidad - intensidad,
 tiempo,
 0 ));
-(await persona.posicionar.codo.derecho( 0 + intensidad - intensidad,
+(await this.posicionar.codo.derecho( 0 + intensidad - intensidad,
 tiempo,
 1 ));
-(await Promise.all( [ persona.posicionar.pierna.izquierda( 0,
+(await Promise.all( [ this.posicionar.pierna.izquierda( 0,
 tiempo,
 0 ),
-persona.posicionar.rodilla.izquierda( 0 - intensidad,
+this.posicionar.rodilla.izquierda( 0 - intensidad,
 tiempo,
 0 ),
-persona.trasladarse.por.eje.x( 0 - distancia_pasos,
+this.trasladarse.por.eje.x( 0 - distancia_pasos,
 tiempo,
 0 ) ] ));
 pantalla.pintarse(  );
-(await Promise.all( [ persona.posicionar.hombro.derecho( 0 - intensidad,
+(await Promise.all( [ this.posicionar.hombro.derecho( 0 - intensidad,
 tiempo,
 0 ),
-persona.posicionar.codo.derecho( 0 + intensidad,
+this.posicionar.codo.derecho( 0 + intensidad,
 tiempo,
 0 ),
-persona.posicionar.hombro.izquierdo( 0 + intensidad,
+this.posicionar.hombro.izquierdo( 0 + intensidad,
 tiempo,
 0 ) ] ));
-(await persona.posicionar.pierna.derecha( 0 - 0,
+(await this.posicionar.pierna.derecha( 0 - 0,
 tiempo,
 1 ));
-(await persona.posicionar.rodilla.derecha( 0 - intensidad,
+(await this.posicionar.rodilla.derecha( 0 - intensidad,
 tiempo,
 1 ));
-(await Promise.all( [ persona.posicionar.pierna.izquierda( 0 + intensidad,
+(await Promise.all( [ this.posicionar.pierna.izquierda( 0 + intensidad,
 tiempo,
 1 ),
-persona.posicionar.rodilla.izquierda( 0 - intensidad,
+this.posicionar.rodilla.izquierda( 0 - intensidad,
 tiempo,
 1 ),
-persona.trasladarse.por.eje.x( 0 - distancia_pasos,
+this.trasladarse.por.eje.x( 0 - distancia_pasos,
 tiempo,
 0 ) ] ));
-(await persona.posicionar.pierna.derecha( 0 - intensidad,
+(await this.posicionar.pierna.derecha( 0 - intensidad,
 tiempo,
 1 ));
-(await persona.posicionar.rodilla.derecha( 0 - intensidad - intensidad,
+(await this.posicionar.rodilla.derecha( 0 - intensidad - intensidad,
 tiempo,
 1 ));}
-persona.restablecer.postura( 1 );
+this.restablecer.postura( 1 );
 }
 else {
 throw new Error( "Solo se soporta direccion 0 o 1" );
@@ -59974,8 +59974,6 @@ throw error;
 }
 
 };
-persona.caminar = caminar_1;
-return persona;
 } catch(error) {
 console.log(error);
 throw error;
@@ -60130,8 +60128,9 @@ mounted() {try {
 console.log("Montada página de inicio.");
 const juego = this.$window.homactografo( this.$refs.salida_del_canvas );
 this.juego = juego;
-this.persona = this.$window.extender_persona( juego.persona,
+this.$window.extender_persona_prototipo( juego.utils.clases.Persona.prototype,
 juego.pantalla );
+this.persona = this.juego.persona;
 this.fondo = this.juego.fondo;
 this.pantalla = this.juego.pantalla;
 const ultimo_script_aplicado = this.juego.utils.getLastScript(  );
