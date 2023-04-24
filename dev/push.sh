@@ -3,6 +3,10 @@ echo 'Escribe el motivo del commit: '
 read motivo
 echo 'Construyendo proyecto...'
 npm run build
+echo 'Haciendo git add'
+ls -lA
+git add .
+git status
 echo 'Haciendo git commit'
 git commit -am "$motivo"
 echo 'Haciendo git push'

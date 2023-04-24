@@ -1,0 +1,67 @@
+asigno window.extender_persona_prototipo como una función con (persona, pantalla) donde {
+  asigno persona.caminar como una función asíncrona con (direccion_arg, distancia_arg, tiempo_arg, pasos_arg, intensidad_arg) donde {
+    creo direccion como cuando direccion_arg no es tipo indefinido entonces direccion_arg si no 0.      ### 1 o 2
+    creo intensidad como cuando intensidad_arg no es tipo indefinido entonces intensidad_arg si no 20.  ### grados de 360
+    creo pasos como cuando pasos_arg no es tipo indefinido entonces pasos_arg si no 5.                  ### pasos en los que se quiere partir
+    creo tiempo como cuando tiempo_arg no es tipo indefinido entonces (tiempo_arg/(10*pasos)) si no 100.        ### milisegundos totales
+    creo distancia como cuando distancia_arg no es tipo indefinido entonces distancia_arg si no 100.    ### distancia total a recorrer
+    creo distancia_pasos como distancia/pasos.    ### variable computada: distancia de cada paso
+    si direccion es igual que 1 {
+      desde 0 hasta pasos {
+        hago ~ this.posicionar.hombro.derecho(   0,tiempo,0).
+        hago ~ this.posicionar.codo.derecho(     0+intensidad,tiempo,0).
+        hago ~ this.posicionar.hombro.izquierdo( 0+intensidad+intensidad,tiempo,0).
+        hago ~ this.posicionar.codo.izquierdo(   0-intensidad+intensidad,tiempo,1).
+        hago ~ Promise.all([
+          this.posicionar.pierna.derecha(     0,tiempo,0),
+          this.posicionar.rodilla.derecha(    0+intensidad,tiempo,0),
+          this.trasladarse.por.eje.x(         0+distancia_pasos,tiempo,0)
+        ]).
+        hago pantalla.pintarse().
+        hago ~ Promise.all([
+          this.posicionar.hombro.izquierdo( 0+intensidad,tiempo,0),
+          this.posicionar.codo.izquierdo(   0-intensidad,tiempo,0),
+          this.posicionar.hombro.derecho(   0-intensidad,tiempo,0)
+        ]).
+        hago ~ this.posicionar.pierna.izquierda(   0+0,tiempo,1).
+        hago ~ this.posicionar.rodilla.izquierda(  0+intensidad,tiempo,1).
+        hago ~ Promise.all([
+          this.posicionar.pierna.derecha(     0-intensidad,tiempo,1),
+          this.posicionar.rodilla.derecha(    0+intensidad,tiempo,1),
+          this.trasladarse.por.eje.x(         0+distancia_pasos,tiempo,0)
+        ]).
+        hago ~ this.posicionar.pierna.izquierda(   0+intensidad,tiempo,1).
+        hago ~ this.posicionar.rodilla.izquierda(  0+intensidad+intensidad,tiempo,1).
+      }.
+      hago this.restablecer.postura(1).
+    } pero si direccion es igual que 0 {
+      desde 0 hasta pasos {
+        hago ~ this.posicionar.hombro.izquierdo(   0,tiempo,0).
+        hago ~ this.posicionar.codo.izquierdo(     0-intensidad,tiempo,0).
+        hago ~ this.posicionar.hombro.derecho( 0-intensidad-intensidad,tiempo,0).
+        hago ~ this.posicionar.codo.derecho(   0+intensidad-intensidad,tiempo,1).
+        hago ~ Promise.all([
+          this.posicionar.pierna.izquierda(     0,tiempo,0),
+          this.posicionar.rodilla.izquierda(    0-intensidad,tiempo,0),
+          this.trasladarse.por.eje.x(           0-distancia_pasos,tiempo,0)
+        ]).
+        hago pantalla.pintarse().
+        hago ~ Promise.all([
+          this.posicionar.hombro.derecho(     0-intensidad,tiempo,0),
+          this.posicionar.codo.derecho(       0+intensidad,tiempo,0),
+          this.posicionar.hombro.izquierdo(   0+intensidad,tiempo,0)
+        ]).
+        hago ~ this.posicionar.pierna.derecha(   0-0,tiempo,1).
+        hago ~ this.posicionar.rodilla.derecha(  0-intensidad,tiempo,1).
+        hago ~ Promise.all([
+          this.posicionar.pierna.izquierda(     0+intensidad,tiempo,1),
+          this.posicionar.rodilla.izquierda(    0-intensidad,tiempo,1),
+          this.trasladarse.por.eje.x(           0-distancia_pasos,tiempo,0)
+        ]).
+        hago ~ this.posicionar.pierna.derecha(   0-intensidad,tiempo,1).
+        hago ~ this.posicionar.rodilla.derecha(  0-intensidad-intensidad,tiempo,1).
+      }.
+      hago this.restablecer.postura(1).
+    } y si no lanzo un nuevo Error("Solo se soporta direccion 0 o 1").
+  }.
+}.
