@@ -5,7 +5,7 @@
   "main": "src/www/js/homactografo.js",
   "scripts": {
     "push": "sh dev/push.sh",
-    "build": "cp -R src/www/* docs && mv docs/app.last.html docs/index.html",
+    "build": "cp -R src/www/* docs && mv docs/app.default.html docs/index.html",
     "test": "npx http-server -c-1 src/www"
   },
   "keywords": [

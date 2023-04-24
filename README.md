@@ -154,7 +154,7 @@ Para extender la API:
 
 Más adelante, se proporcionarán más ejemplos de cómo hacer esto. Por ahora, puedes ver el ejemplo del método `caminar`, implementado desde el `src/www/app.default.calo`.
 
-## Ejemplos de script
+## Ejemplos de scripts para el homactógrafo de Castelog
 
 En esta sección puedes encontrar ejemplos de homactogramas.
 
