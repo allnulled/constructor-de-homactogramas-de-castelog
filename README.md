@@ -55,6 +55,7 @@ Y de esa forma, conseguimos hacer hablar al PaloMan o moverlo, pero escribiendo 
 | `fondo.pintarse` | `-` | Pinta el fondo. Debería usarse directamente el método de `pantalla.pintarse()` y él se encarga de pintar todos los elementos por el orden adecuado. |
 | `pantalla.pintarse` | `-` | Pinta todos los elementos de la pantalla. |
 | `pantalla.pintarse.cada` | `Number:milisegundos` | Reinicia una llamada autoconcatenada y temporizada al método `pantalla.pintarse` automáticamente. |
+| `pantalla.incluir` | `Objeto:pintable` | Incluye un objeto en el pintado de la pantalla. Se usará el método `pintarse` del objeto para ello. |
 
 #### Propiedades de bajo nivel de `persona`:
 
@@ -152,3 +153,13 @@ Para extender la API:
       - y así, podrás incluir nuevos objetos.
 
 Más adelante, se proporcionarán más ejemplos de cómo hacer esto. Por ahora, puedes ver el ejemplo del método `caminar`, implementado desde el `src/www/app.default.calo`.
+
+## Ejemplos de script
+
+En esta sección puedes encontrar ejemplos de homactogramas.
+
+### Ejemplo de homactograma de 2 que se encuentran por la calle y se saludan:
+
+```calo
+
+```

@@ -1,7 +1,7 @@
 {
   "name": "homactografo",
   "version": "1.0.0",
-  "description": "Homactógrafo con línea de fuga y eje z con movimiento al rojo-negro.",
+  "description": "Homactógrafo con línea de fuga y eje z con movimiento al rojo-azul.",
   "main": "src/www/js/homactografo.js",
   "scripts": {
     "push": "sh dev/push.sh",

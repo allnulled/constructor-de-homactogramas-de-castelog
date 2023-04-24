@@ -42,8 +42,6 @@ Ejecutable como documento HTML5
     <div id="app"></div>
 </body>.
 
-importo api nativa.
-
 asigno window.extender_persona_prototipo como una función con (persona, pantalla) donde {
   asigno persona.caminar como una función asíncrona con (direccion_arg, distancia_arg, tiempo_arg, pasos_arg, intensidad_arg) donde {
     creo direccion como cuando direccion_arg no es tipo indefinido entonces direccion_arg si no 0.      ### 1 o 2
