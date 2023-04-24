@@ -1,8 +1,8 @@
 #!/usr/bin/bash
-echo 'Escribe el motivo del commit: '
-read motivo
 echo 'Construyendo proyecto...'
 npm run build
+echo 'Escribe el motivo del commit: '
+read motivo
 echo 'Haciendo git add'
 ls -lA
 git add .
