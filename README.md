@@ -10,7 +10,13 @@ Homactógrafo en 2D con profundidad Z para Castelog.
 
 ## API
 
-### Referencia
+
+### Ficheros
+
+ - El `src/www/js/homactografo.js` contiene la API del homectógrafo. Depués de cargarlo podrás encontrarlo en `window.homactografo`.
+ - El `src/www/app.default.calo` contiene el código fuente de una implementación del `homactografo` de JavaScript en HTML mediante Castelog/Vue2 y su (futuro componente): `<ConstructorDeHomactogramasDeCastelog />`.
+
+### Introducción
 
 Desde scripts con `javascript`:
 
@@ -38,9 +44,19 @@ hago ~ persona.decir("Un diálogo anunciará esta acción.").
 hago ~ persona.caminar(1,10,500,5,200).
 ```
 
-Y de esa forma, conseguimos mover el monigote escribiendo solo 1 línea. Y así se pueden ir añadiendo métodos, y ampliar las capacidades de la `persona`: ampliando el `utils.clases.Persona.prototype` con métodos tipo prototipo.
+Y de esa forma, conseguimos hacer hablar al PaloMan o moverlo, pero escribiendo solo 1 línea. Y así se pueden ir añadiendo métodos, y ampliar las capacidades de la `persona`: ampliando el `utils.clases.Persona.prototype` con métodos tipo prototipo. Para ello, puedes leer más en la sección de [extender la API](#extender-la-api).
 
 ### Referencia
+
+#### Métodos del `fondo` y de la `pantalla`
+
+| Método | Parámetros | Descripción |
+| ------ | ---------- | ----------- |
+| `fondo.pintarse` | `-` | Pinta el fondo. Debería usarse directamente el método de `pantalla.pintarse()` y él se encarga de pintar todos los elementos por el orden adecuado. |
+| `pantalla.pintarse` | `-` | Pinta todos los elementos de la pantalla. |
+| `pantalla.pintarse.cada` | `Number:milisegundos` | Reinicia una llamada autoconcatenada y temporizada al método `pantalla.pintarse` automáticamente. |
+
+#### Propiedades de bajo nivel de `persona`:
 
 | Propiedad de persona | Tipo | Unidad | Valor por defecto | Descripción |
 |----|----|----|----|----|
@@ -71,6 +87,8 @@ Y de esa forma, conseguimos mover el monigote escribiendo solo 1 línea. Y así 
 | `apertura_de_la_rodilla_izq` | `Number` | Grados/360º | `0` | Apertura de la rodilla izquierda |
 | `apertura_de_la_rodilla_der` | `Number` | Grados/360º | `0` | Apertura de la rodilla derecha |
 
+#### Métodos de bajo nivel de `persona`:
+
 | Métodos de persona de bajo nivel | Parámetros | Descripción |
 | ---- | ---- | ---- | 
 | `persona.pintarse` | `-` | Método que pinta a la persona. Se debería usar solo el método `pantalla.pintarse`, y él llama a los `pintarse` de los demás objetos. | 
@@ -97,11 +115,6 @@ Y de esa forma, conseguimos mover el monigote escribiendo solo 1 línea. Y así 
 | `persona.posicionar.pierna.derecha` | `grados, milisegundos=0, pintar_despues=0` | Asignación del ángulo de la articulación específica. | 
 | `persona.posicionar.pierna.izquierda` | `grados, milisegundos=0, pintar_despues=0` | Asignación del ángulo de la articulación específica. | 
 
-| Métodos de persona de alto nivel | Parámetros | Descripción |
-| ---- | ---- | ---- | 
-| `persona.decir` | `String:mensaje` | Método para escribir por pantalla texto. | 
-| `persona.caminar` | `Number:direccion=1, Number:distancia=50, Number:milisegundos=1000, Number:pasos=10, Number:intensidad=20` | Método para desplazar simulando movimiento. Si `direccion` vale `0` va a la izquierda, si vale `1` va a la derecha. La `distancia` son los píxeles del eje x. Los `milisegundos` es lo que quieres que dure todo el movimiento de caminar. Los `pasos` son el número de pasos que quieres que dé. La `intensidad` son los grados de ángulo que quieres que tenga al caminar. Un ángulo entre `10` y `45` será el razonable. | 
-
 Los métodos `rotar` y `posicionar` hacen lo mismo, al igual que `trasladarse` y `posicionarse`: pero el primero de cada par incrementa el valor relativamente al actual, mientras que el segundo se basa en el valor directamente.
 
 Las unidades siempre son:
@@ -111,3 +124,22 @@ Las unidades siempre son:
   - o `milisegundos` de los de 1000 = 1 segundo
   - o `pintar_despues` que es un `boolean` que en `true` pintará la pantalla.
 
+#### Métodos de alto nivel de `persona`:
+
+| Métodos de persona de alto nivel | Parámetros | Descripción |
+| ---- | ---- | ---- | 
+| `persona.decir` | `String:mensaje` | Método para escribir por pantalla texto. | 
+| `persona.caminar` | `Number:direccion=1, Number:distancia=50, Number:milisegundos=1000, Number:pasos=10, Number:intensidad=20` | Método para desplazar simulando movimiento. Si `direccion` vale `0` va a la izquierda, si vale `1` va a la derecha. La `distancia` son los píxeles del eje x. Los `milisegundos` es lo que quieres que dure todo el movimiento de caminar. Los `pasos` son el número de pasos que quieres que dé. La `intensidad` son los grados de ángulo que quieres que tenga al caminar. Un ángulo entre `10` y `45` será el razonable. | 
+
+## Extender la API
+
+Hasta aquí, sólo podrías:
+  - crear personas
+  - añadir y quitar personas de la pantalla
+
+Si quieres ir más allá, tienes que extender la API nativa del homactógrafo y así:
+  - poder ampliar las capacidades de cualquier `persona`
+  - cambiar las configuraciones del `fondo`
+  - poder crear distintos tipos de objetos a parte de la `persona`
+
+P

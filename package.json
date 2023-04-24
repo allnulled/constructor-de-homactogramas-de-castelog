@@ -4,6 +4,7 @@
   "description": "Homactógrafo con línea de fuga y eje z con movimiento al rojo-negro.",
   "main": "src/www/js/homactografo.js",
   "scripts": {
+    "push": "echo 'Escribe el motivo del commit: ' && read motivo && npm run build && git add . && git commit -m $motivo && git push",
     "build": "cp -R src/www/* docs && mv docs/app.last.html docs/index.html",
     "test": "npx http-server -c-1 src/www"
   },
