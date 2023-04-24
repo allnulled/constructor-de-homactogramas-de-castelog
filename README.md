@@ -142,4 +142,13 @@ Si quieres ir más allá, tienes que extender la API nativa del homactógrafo y 
   - cambiar las configuraciones del `fondo`
   - poder crear distintos tipos de objetos a parte de la `persona`
 
-P
+Para extender la API:
+  - extiende `utils.clases.Persona.prototype` para dotar a toda persona de nuevos métodos.
+  - extiende `persona` para dotar a la persona principal de nuevos métodos.
+  - crea  una clase `Objeto` que extienda de `Persona` y en ella:
+    - sobreescribe el método `pintarse` para personalizar el pintado.
+    - sobreescribe las propiedades de bajo nivel de `Persona` para personalizar los datos del objeto.
+    - crea instancias de la clase `Objeto` y hazlas incluir por la `pantalla`
+      - y así, podrás incluir nuevos objetos.
+
+Más adelante, se proporcionarán más ejemplos de cómo hacer esto. Por ahora, puedes ver el ejemplo del método `caminar`, implementado desde el `src/www/app.default.calo`.
