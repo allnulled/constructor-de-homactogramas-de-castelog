@@ -44,6 +44,7 @@ Y de esa forma, conseguimos mover el monigote escribiendo solo 1 línea. Y así 
 
 | Propiedad de persona | Tipo | Unidad | Valor por defecto | Descripción |
 |----|----|----|----|----|
+| `pantalla` | `Object` | Instancia de `utils.Pantalla` | `{...}` | Pantalla principal vinculada. |
 | `nombre` | `String` | Texto | `"persona aleatoria"` | Nombre representativo de la persona. |
 | `estado_inicial` | `Object` | Objeto | `{...}` | Estado inicial de la instancia. |
 | `restablecer` | `Object` | Objeto | `{...}` | Métodos de restablecimiento. |
@@ -70,31 +71,31 @@ Y de esa forma, conseguimos mover el monigote escribiendo solo 1 línea. Y así 
 | `apertura_de_la_rodilla_izq` | `Number` | Grados/360º | `0` | Apertura de la rodilla izquierda |
 | `apertura_de_la_rodilla_der` | `Number` | Grados/360º | `0` | Apertura de la rodilla derecha |
 
-| Métodos de persona de bajo nivel | Descripción |
-| ---- | ---- | 
-| `persona.pintarse()` | Método que pinta a la persona. Se debería usar solo el método `pantalla.pintarse`, y él llama a los `pintarse` de los demás objetos. | 
-| `persona.trasladarse.por.eje.x(pixels,milisegundos=0,pintar_despues=0)` | Incremento en el eje x. | 
-| `persona.trasladarse.por.eje.y(pixels,milisegundos=0,pintar_despues=0)` | Incremento en el eje y. | 
-| `persona.trasladarse.por.eje.z(pixels,milisegundos=0,pintar_despues=0)` | Incremento en el eje z. |
-| `persona.posicionarse.por.eje.x(pixels,milisegundos=0,pintar_despues=0)` | Asignación del eje x. | 
-| `persona.posicionarse.por.eje.y(pixels,milisegundos=0,pintar_despues=0)` | Asignación del eje y. | 
-| `persona.posicionarse.por.eje.z(pixels,milisegundos=0,pintar_despues=0)` | Asignación del eje z. |
-| `persona.rotar.hombro.derecho(grados,milisegundos=0,pintar_despues=0)` | Incremento del ángulo de la articulación específica. | 
-| `persona.rotar.hombro.izquierdo(grados,milisegundos=0,pintar_despues=0)` | Incremento del ángulo de la articulación específica. | 
-| `persona.rotar.codo.derecho(grados,milisegundos=0,pintar_despues=0)` | Incremento del ángulo de la articulación específica. | 
-| `persona.rotar.codo.izquierdo(grados,milisegundos=0,pintar_despues=0)` | Incremento del ángulo de la articulación específica. | 
-| `persona.rotar.rodilla.derecha(grados,milisegundos=0,pintar_despues=0)` | Incremento del ángulo de la articulación específica. | 
-| `persona.rotar.rodilla.izquierda(grados,milisegundos=0,pintar_despues=0)` | Incremento del ángulo de la articulación específica. | 
-| `persona.rotar.pierna.derecha(grados,milisegundos=0,pintar_despues=0)` | Incremento del ángulo de la articulación específica. | 
-| `persona.rotar.pierna.izquierda(grados,milisegundos=0,pintar_despues=0)` | Incremento del ángulo de la articulación específica. | 
-| `persona.posicionar.hombro.derecho(grados,milisegundos=0,pintar_despues=0)` | Asignación del ángulo de la articulación específica. | 
-| `persona.posicionar.hombro.izquierdo(grados,milisegundos=0,pintar_despues=0)` | Asignación del ángulo de la articulación específica. | 
-| `persona.posicionar.codo.derecho(grados,milisegundos=0,pintar_despues=0)` | Asignación del ángulo de la articulación específica. | 
-| `persona.posicionar.codo.izquierdo(grados,milisegundos=0,pintar_despues=0)` | Asignación del ángulo de la articulación específica. | 
-| `persona.posicionar.rodilla.derecha(grados,milisegundos=0,pintar_despues=0)` | Asignación del ángulo de la articulación específica. | 
-| `persona.posicionar.rodilla.izquierda(grados,milisegundos=0,pintar_despues=0)` | Asignación del ángulo de la articulación específica. | 
-| `persona.posicionar.pierna.derecha(grados,milisegundos=0,pintar_despues=0)` | Asignación del ángulo de la articulación específica. | 
-| `persona.posicionar.pierna.izquierda(grados,milisegundos=0,pintar_despues=0)` | Asignación del ángulo de la articulación específica. | 
+| Métodos de persona de bajo nivel | Parámetros | Descripción |
+| ---- | ---- | ---- | 
+| `persona.pintarse` | `-` | Método que pinta a la persona. Se debería usar solo el método `pantalla.pintarse`, y él llama a los `pintarse` de los demás objetos. | 
+| `persona.trasladarse.por.eje.x` | `pixels, milisegundos=0, pintar_despues=0` | Incremento en el eje x. | 
+| `persona.trasladarse.por.eje.y` | `pixels, milisegundos=0, pintar_despues=0` | Incremento en el eje y. | 
+| `persona.trasladarse.por.eje.z` | `pixels, milisegundos=0, pintar_despues=0` | Incremento en el eje z. |
+| `persona.posicionarse.por.eje.x` | `pixels, milisegundos=0, pintar_despues=0` | Asignación del eje x. | 
+| `persona.posicionarse.por.eje.y` | `pixels, milisegundos=0, pintar_despues=0` | Asignación del eje y. | 
+| `persona.posicionarse.por.eje.z` | `pixels, milisegundos=0, pintar_despues=0` | Asignación del eje z. |
+| `persona.rotar.hombro.derecho` | `grados, milisegundos=0, pintar_despues=0` | Incremento del ángulo de la articulación específica. | 
+| `persona.rotar.hombro.izquierdo` | `grados, milisegundos=0, pintar_despues=0` | Incremento del ángulo de la articulación específica. | 
+| `persona.rotar.codo.derecho` | `grados, milisegundos=0, pintar_despues=0` | Incremento del ángulo de la articulación específica. | 
+| `persona.rotar.codo.izquierdo` | `grados, milisegundos=0, pintar_despues=0` | Incremento del ángulo de la articulación específica. | 
+| `persona.rotar.rodilla.derecha` | `grados, milisegundos=0, pintar_despues=0` | Incremento del ángulo de la articulación específica. | 
+| `persona.rotar.rodilla.izquierda` | `grados, milisegundos=0, pintar_despues=0` | Incremento del ángulo de la articulación específica. | 
+| `persona.rotar.pierna.derecha` | `grados, milisegundos=0, pintar_despues=0` | Incremento del ángulo de la articulación específica. | 
+| `persona.rotar.pierna.izquierda` | `grados, milisegundos=0, pintar_despues=0` | Incremento del ángulo de la articulación específica. | 
+| `persona.posicionar.hombro.derecho` | `grados, milisegundos=0, pintar_despues=0` | Asignación del ángulo de la articulación específica. | 
+| `persona.posicionar.hombro.izquierdo` | `grados, milisegundos=0, pintar_despues=0` | Asignación del ángulo de la articulación específica. | 
+| `persona.posicionar.codo.derecho` | `grados, milisegundos=0, pintar_despues=0` | Asignación del ángulo de la articulación específica. | 
+| `persona.posicionar.codo.izquierdo` | `grados, milisegundos=0, pintar_despues=0` | Asignación del ángulo de la articulación específica. | 
+| `persona.posicionar.rodilla.derecha` | `grados, milisegundos=0, pintar_despues=0` | Asignación del ángulo de la articulación específica. | 
+| `persona.posicionar.rodilla.izquierda` | `grados, milisegundos=0, pintar_despues=0` | Asignación del ángulo de la articulación específica. | 
+| `persona.posicionar.pierna.derecha` | `grados, milisegundos=0, pintar_despues=0` | Asignación del ángulo de la articulación específica. | 
+| `persona.posicionar.pierna.izquierda` | `grados, milisegundos=0, pintar_despues=0` | Asignación del ángulo de la articulación específica. | 
 
 | Métodos de persona de alto nivel | Descripción |
 | ---- | ---- | 
