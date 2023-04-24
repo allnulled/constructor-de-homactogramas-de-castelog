@@ -522,9 +522,12 @@ window.homactografo = function(elemento_de_salida, settings = {}) {
         this.con.cacheo = {};
       };
     }
-    decir(mensaje = "...") {
+    decir(mensaje = "...", tiempo = 10) {
       console.log("Personaje procede a decir algo.");
       utils.printar(`- ${mensaje} — dijo ${this.nombre}.`);
+      return new Promise(ok => {
+        setTimeout(() => ok(), tiempo);
+      });
     }
     pintarse(ctx) {
       console.log("Personaje procede a pintarse.");

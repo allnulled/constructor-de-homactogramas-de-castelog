@@ -158,8 +158,4 @@ Más adelante, se proporcionarán más ejemplos de cómo hacer esto. Por ahora, 
 
 En esta sección puedes encontrar ejemplos de homactogramas.
 
-### Ejemplo de homactograma de 2 que se encuentran por la calle y se saludan:
-
-```calo
-
-```
+  - [Dos por la calle que se saludan](https://allnulled.github.io/constructor-de-homactogramas-de-castelog/app.dos-por-la-calle-saludar.html#/).
