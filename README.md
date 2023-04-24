@@ -29,45 +29,81 @@ const {
 
 Desde el homactógrafo de `castelog` puedes acceder a estas variables directamente: `persona`, `fondo`, `pantalla` y `utils`.
 
-El script de ejemplo hace una forma de caminar:
+El script de ejemplo permite a toda instancia de `Persona` la función de `caminar` en una posible versión:
 
 ```calo
-hago persona.restablecer.estado(1).
-creo largo como 20.
-creo tiempo como 100.
-creo pasos como 20.
-creo distancia como 200.
-creo distancia_pasos como distancia/pasos.
-desde 0 hasta pasos {
- hago ~ persona.posicionar.hombro.derecho(   0-largo-largo,tiempo,1).
- hago ~ persona.posicionar.codo.derecho(     0+largo,tiempo,1).
- hago ~ persona.posicionar.hombro.izquierdo( 0+largo+largo,tiempo,1).
- hago ~ persona.posicionar.codo.izquierdo(   0-largo,tiempo,1).
- hago ~ persona.posicionar.hombro.izquierdo( 0+largo,tiempo,1).
- hago ~ persona.posicionar.hombro.derecho(   0-largo,tiempo,1).
- hago ~ Promise.all([
-  persona.posicionar.pierna.derecha(     0+largo,tiempo,0),
-  persona.posicionar.rodilla.derecha(    0+largo,tiempo,0),
-  persona.trasladarse.por.eje.x(0+distancia_pasos,tiempo,0)
- ]).
- hago pantalla.pintarse().
- hago ~ persona.posicionar.pierna.izquierda(   0+0,tiempo,1).
- hago ~ persona.posicionar.rodilla.izquierda(  0+largo,tiempo,1).
- hago ~ Promise.all([
-  persona.posicionar.pierna.derecha(     0-largo,tiempo,1),
-  persona.posicionar.rodilla.derecha(    0+largo,tiempo,1),
-  persona.trasladarse.por.eje.x(0+distancia_pasos,tiempo,0)
- ]).
- hago ~ persona.posicionar.pierna.izquierda(   0+largo,tiempo,1).
- hago ~ persona.posicionar.rodilla.izquierda(  0+largo+largo,tiempo,1).
+creo caminar_1 como una función asíncrona con (direccion_arg, largo_arg, tiempo_arg, pasos_arg, distancia_arg) donde {
+ creo direccion como direccion_arg o 0.        ### 1 o 2
+ creo intensidad como intensidad_arg o 20.     ### grados de 360
+ creo tiempo como tiempo_arg o 100.            ### milisegundos
+ creo pasos como pasos_arg o 5.                ### pasos en los que se quiere partir
+ creo distancia como distancia_arg o 100.      ### distancia total a recorrer
+ creo distancia_pasos como distancia/pasos.    ### variable computada: distancia de cada paso
+ si direccion es igual que 1 {
+  desde 0 hasta pasos {
+   hago ~ persona.posicionar.hombro.derecho(   0,tiempo,0).
+   hago ~ persona.posicionar.codo.derecho(     0+intensidad,tiempo,0).
+   hago ~ persona.posicionar.hombro.izquierdo( 0+intensidad+intensidad,tiempo,0).
+   hago ~ persona.posicionar.codo.izquierdo(   0-intensidad+intensidad,tiempo,1).
+   hago ~ Promise.all([
+    persona.posicionar.pierna.derecha(     0,tiempo,0),
+    persona.posicionar.rodilla.derecha(    0+intensidad,tiempo,0),
+    persona.trasladarse.por.eje.x(         0+distancia_pasos,tiempo,0)
+   ]).
+   hago pantalla.pintarse().
+   hago ~ Promise.all([
+    persona.posicionar.hombro.izquierdo( 0+intensidad,tiempo,0),
+    persona.posicionar.codo.izquierdo(   0-intensidad,tiempo,0),
+    persona.posicionar.hombro.derecho(   0-intensidad,tiempo,0)
+   ]).
+   hago ~ persona.posicionar.pierna.izquierda(   0+0,tiempo,1).
+   hago ~ persona.posicionar.rodilla.izquierda(  0+intensidad,tiempo,1).
+   hago ~ Promise.all([
+    persona.posicionar.pierna.derecha(     0-intensidad,tiempo,1),
+    persona.posicionar.rodilla.derecha(    0+intensidad,tiempo,1),
+    persona.trasladarse.por.eje.x(         0+distancia_pasos,tiempo,0)
+   ]).
+   hago ~ persona.posicionar.pierna.izquierda(   0+intensidad,tiempo,1).
+   hago ~ persona.posicionar.rodilla.izquierda(  0+intensidad+intensidad,tiempo,1).
+  }.
+  hago persona.restablecer.postura(1).
+ } pero si direccion es igual que 0 {
+  desde 0 hasta pasos {
+   hago ~ persona.posicionar.hombro.izquierdo(   0,tiempo,0).
+   hago ~ persona.posicionar.codo.izquierdo(     0-intensidad,tiempo,0).
+   hago ~ persona.posicionar.hombro.derecho( 0-intensidad-intensidad,tiempo,0).
+   hago ~ persona.posicionar.codo.derecho(   0+intensidad-intensidad,tiempo,1).
+   hago ~ Promise.all([
+    persona.posicionar.pierna.izquierda(     0,tiempo,0),
+    persona.posicionar.rodilla.izquierda(    0-intensidad,tiempo,0),
+    persona.trasladarse.por.eje.x(           0-distancia_pasos,tiempo,0)
+   ]).
+   hago pantalla.pintarse().
+   hago ~ Promise.all([
+    persona.posicionar.hombro.derecho(     0-intensidad,tiempo,0),
+    persona.posicionar.codo.derecho(       0+intensidad,tiempo,0),
+    persona.posicionar.hombro.izquierdo(   0+intensidad,tiempo,0)
+   ]).
+   hago ~ persona.posicionar.pierna.derecha(   0-0,tiempo,1).
+   hago ~ persona.posicionar.rodilla.derecha(  0-intensidad,tiempo,1).
+   hago ~ Promise.all([
+    persona.posicionar.pierna.izquierda(     0+intensidad,tiempo,1),
+    persona.posicionar.rodilla.izquierda(    0-intensidad,tiempo,1),
+    persona.trasladarse.por.eje.x(           0-distancia_pasos,tiempo,0)
+   ]).
+   hago ~ persona.posicionar.pierna.derecha(   0-intensidad,tiempo,1).
+   hago ~ persona.posicionar.rodilla.derecha(  0-intensidad-largo,tiempo,1).
+  }.
+  hago persona.restablecer.postura(1).
+ } y si no lanzo un nuevo Error("Solo se soporta direccion 0 o 1").
 }.
-hago persona.restablecer.postura(1).
+asigno persona.prototype.caminar como caminar_1.
 ```
 
 Esto se puede envolver en una función, y llamar desde ella a todo el proceso. Así, podemos hacer directamente:
 
 ```calo
-hago ~ persona.caminar_1(50).
+hago ~ persona.caminar(1,10,500,5,200).
 ```
 
 Y de esa forma, conseguimos mover el monigote escribiendo solo 1 línea.
@@ -138,4 +174,5 @@ Las unidades siempre son:
   - o `pixels` (en el caso del eje z, píxels imaginarios que el homactógrafo se cuida de proyectar)
   - o `grados` de los de 360º
   - o `milisegundos` de los de 1000 = 1 segundo
-  - o `pintar_despues` que es un `boolean` que en `true` pintará la pantalla.# constructor-de-homactogramas-de-castelog
+  - o `pintar_despues` que es un `boolean` que en `true` pintará la pantalla.
+

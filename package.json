@@ -4,10 +4,17 @@
   "description": "Homactógrafo con línea de fuga y eje z con movimiento al rojo-negro.",
   "main": "src/www/js/homactografo.js",
   "scripts": {
+    "build": "cp -R src/www/* docs && mv docs/app.last.html docs/index.html",
     "test": "npx http-server -c-1 src/www"
   },
-  "keywords": ["homactografo", "paloman"],
+  "keywords": [
+    "homactografo",
+    "paloman"
+  ],
   "author": "allnulled",
   "license": "WTFPL",
-  "devDependencies": {}
+  "devDependencies": {},
+  "directories": {
+    "doc": "docs"
+  }
 }
