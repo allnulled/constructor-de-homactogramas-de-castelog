@@ -47,50 +47,52 @@ asigno window.codigo_de_ejemplo como un código en texto donde {
 si window.globales_unicas es tipo indefinido {
   asigno window.globales_unicas como {}.
 }.
-creo _ como window.globales_unicas.
-si _.persona2 es tipo indefinido {
-  asigno _.persona2 como una nueva utils.clases.Persona().
-  hago ~ pantalla.incluir(_.persona2).
+si window.globales_unicas.persona2 es tipo indefinido {
+  asigno window.globales_unicas.persona2 como una nueva utils.clases.Persona().
+  hago ~ pantalla.incluir(window.globales_unicas.persona2).
 }.
+desacoplo constantes { persona2 } a partir de window.globales_unicas.
 hago ~ persona.restablecer.postura().
 hago ~ persona.posicionarse.por.eje.x(50).
-hago ~ _.persona2.restablecer.postura().
-hago ~ _.persona2.posicionarse.por.eje.x(450).
+hago ~ persona2.restablecer.postura().
+hago ~ persona2.posicionarse.por.eje.x(450).
 hago ~ pantalla.pintarse().
 hago ~ Promise.all([
   persona.caminar(1,70,2000,5,20),
-  _.persona2.caminar(0,70,2000,5,20)
+  persona2.caminar(0,70,2000,5,20)
 ]).
+asigno persona.nombre como "Calo".
+asigno persona2.nombre como "Pepito".
 hago ~ persona.decir("¡Hola, Don Pepito!", 1000).
-hago ~ _.persona2.decir("¡Hola, Don Calo!", 1000).
+hago ~ persona2.decir("¡Hola, Don Calo!", 1000).
 hago ~ persona.decir("¿Pasó usted por mi casa?", 1000).
-hago ~ _.persona2.decir("¡Por su casa yo pasé!", 1000).
+hago ~ persona2.decir("¡Por su casa yo pasé!", 1000).
 hago ~ persona.decir("OK. ¿Traes la pasta?", 1000).
-hago ~ _.persona2.decir("¡Así es! Ten.", 1000).
+hago ~ persona2.decir("¡Así es! Ten.", 1000).
 creo darse_la_mano como una función asíncrona donde {
   creo inclinacion como 18.
   hago ~ persona.posicionar.hombro.derecho(0-inclinacion,500).
-  hago ~ _.persona2.posicionar.hombro.izquierdo(0+inclinacion,500).
+  hago ~ persona2.posicionar.hombro.izquierdo(0+inclinacion,500).
   hago ~ persona.posicionar.codo.derecho(0-inclinacion,500).
-  hago ~ _.persona2.posicionar.codo.izquierdo(0+inclinacion,500).
+  hago ~ persona2.posicionar.codo.izquierdo(0+inclinacion,500).
   hago ~ pantalla.pintarse().
   hago ~ persona.posicionar.hombro.derecho(0,500).
-  hago ~ _.persona2.posicionar.hombro.izquierdo(0,500).
+  hago ~ persona2.posicionar.hombro.izquierdo(0,500).
   hago ~ persona.posicionar.codo.derecho(0,500).
-  hago ~ _.persona2.posicionar.codo.izquierdo(0,500).
+  hago ~ persona2.posicionar.codo.izquierdo(0,500).
   hago ~ pantalla.pintarse().
 }.
 hago darse_la_mano().
 hago ~ persona.decir("Guai. Es Afghan Kush, te molará, interior guapa.", 1000).
 hago ~ darse_la_mano().
-hago ~ persona.decir("Si lo dices tú, me lo creo.", 1000).
+hago ~ persona2.decir("Si lo dices tú, me lo creo.", 1000).
 hago ~ persona.decir("Bueno, ya me dirás qué te parece.", 1000).
-hago ~ persona.decir("OK. En unos días te diré algo de lo otro.", 1000).
+hago ~ persona2.decir("OK. En unos días te diré algo de lo otro.", 1000).
 hago ~ persona.decir("Perfecto. Venga tío, cuídate.", 1000).
-hago ~ persona.decir("Vale, nos vemos.").
+hago ~ persona2.decir("Vale, nos vemos.").
 hago ~ Promise.all([
   persona.caminar(1,200,2000,5,20),
-  _.persona2.caminar(0,200,6000,15,20)
+  persona2.caminar(0,200,6000,15,20)
 ]).
 retorno.
 }.trim().
